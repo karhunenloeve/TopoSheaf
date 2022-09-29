@@ -1,2 +1,6 @@
-# FAU-Seminar-Topology
-Handout and notes for a seminar in topology hold at FAU with focus on sheaf theory.
+# TopoSheaf
+#### Themen:
+- Natürliche Transformationen.
+- Äquivalenzen von Funktoren.
+- Darstellbare Funktoren.
+- Beweis des Yoneda-Lemmas.
