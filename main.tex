@@ -1,0 +1,78 @@
+\documentclass{article}
+\usepackage{amsmath}
+\usepackage{a4wide}
+\usepackage{amssymb}
+\usepackage{amsfonts}
+\usepackage{tikz}
+\usepackage{tikz-cd}
+\usepackage{euler}
+\usepackage{xcolor}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{remark}{Bemerkung}[section]
+
+\usepackage{enumitem}
+\setlist[itemize]{noitemsep, nolistsep}
+
+\title{Natürliche Transformationen, Äquivalenzen von Funktoren, darstellbare Funktoren und das Yoneda Lemma}
+\author{Luciano Melodia}
+\date{25.10.2022}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+    
+\end{abstract}
+\section{Natürliche Transformationen}
+Im Folgenden seien $\mathcal{A},\mathcal{B}$ Kategorien, und $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren. Um natürliche Transformationen definieren zu können, brauchen wir die folgenden Daten und Eigenschaften:
+\begin{itemize}
+	\item Einen Morphismus $\tau^{X}: F(X) \rightarrow G(X)$ für jedes Objekt $X \in \mathcal{A}$.
+	\item Die Eigenschaft falls $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist, so gilt
+	\begin{equation}
+		G(f) \circ \tau^{X} = \tau^{Y} \circ F(f).
+	\end{equation}
+\end{itemize}
+Dies führt uns zu folgender Definition.
+
+\begin{definition}
+Eine \textbf{natürliche Transformation} $\tau: F \Longrightarrow G$ von einem Funktor $F$ zu einem zweiten Funktor $G$ ordnet jedem Objekt $X \in \mathcal{A}$ einen Homomorphismus $\tau^{X}: F(X) \rightarrow G(X)$ in $\mathcal{B}$ zu, auch \textbf{Komponente von $\tau$ bei $X$} genannt, so dass für jeden Morphismus $f: X \rightarrow Y$ in $\mathcal{A}$ das folgende Diagramm kommutiert:
+\end{definition}
+\begin{equation}
+	\begin{tikzcd}
+	F(X) \arrow[rr, "F(f)" description] \arrow[d, "\tau^{X}" description] &  & F(Y) \arrow[d, "\tau^{Y}" description] \\
+	G(X) \arrow[rr, "G(f)" description]                                   &  & G(Y)                                  
+	\end{tikzcd}.
+\end{equation}
+Als Formel lässt sich das Diagramm ausdrücken durch folgende Gleichung: $\tau^{Y} \circ F(f) = G(f) \circ \tau^{X}$. Für Funktoren $F,G$ wird mit $\text{Mor}_{\text{Fun}}(F,G)$ die \textbf{Menge der natürlichen Transformationen} von $F$ nach $G$ bezeichnet.
+
+\begin{remark}
+Die natürliche Transformation $\tau$ ist die Gesamtheit aller Morphismen $\tau^{X}$. In der Literatur findet sich diese Tatsache in der Notation $\tau = (\tau^{X})_{X \in \mathcal{A}}$ wieder, wobei jedes $\tau^{X}$ eine Komponente von $\tau$ ist. Man kann eine gewisse Analogie zu dem Aufbau von Folgen als Gesamtheit ihrer Terme $s = \{s_n\}_{n \in \mathbb{N}}$ sehen.
+\end{remark}
+
+In anderen Worten ist eine natürliche Transformation eine Sammlung von Abbildungen von einem Diagramm in ein anderes. Das Besondere an diesen Abbildungen ist, dass sie kommutieren. Nehmen wir eine natürliche Transformation zwischen zwei Funktoren $\tau: F \Longrightarrow G$, dann können wir durch folgendes Diagramm eine bessere Intuition für natürliche Transformationen gewinnen:
+\begin{equation}
+	\begin{tikzcd}
+	                                                   & {\color{red}F} \arrow[r, Rightarrow, "\tau"]                 & {\color{blue}G}, &                            &                 \\
+	{\color{red}F(X)} \arrow[dd, red] \arrow[rd, red] \arrow[rrr, "\tau^{X}"] &                                         &   & {\color{blue}G(X)} \arrow[rd, blue] \arrow[dd, blue] &                 \\
+	                                                   & {\color{red}F(Z)} \arrow[ld, red] \arrow[rrr, "\tau^{Z}", gray] &   &                            & {\color{blue}G(Z)} \arrow[ld, blue] \\
+	{\color{red}F(Y)} \arrow[rrr, "\tau^{Y}"]                       &                                         &   & {\color{blue}G(Y)}                       &                
+	\end{tikzcd}.
+\end{equation}
+Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschluss ein paar Sonderfälle und Beispiele für natürliche Transformationen.
+
+\paragraph{Sonderfälle.}
+\begin{enumerate}
+	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X \in \mathcal{A}$ auf ein einziges Objekt $Y \in \mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{Y}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $Y'$ und $\text{Id}_{Y'}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: Y \Longrightarrow Y'$.
+	\item Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ konstant für ein Objekt $Y \in \mathcal{B}$ und $G: \mathcal{A} \rightarrow \mathcal{B}$ ein beliebiger Funktor. Dann besteht die natürliche Transformation $\tau: F \Longrightarrow G$ aus Abbildungen $\tau^{X}: Y \rightarrow G(X)$, eine für jedes $X \in \mathcal{A}$. 
+\end{enumerate}
+
+\section{Äquivalenzen von Funktoren}
+
+\section{Darstellbare Funktoren}
+
+\paragraph{Beispiele}
+
+\section{Yoneda Lemma}
+
+\end{document}
