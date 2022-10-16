@@ -22,50 +22,82 @@
 \maketitle
 
 \begin{abstract}
-    
+In diesem Skript behandeln wir die Definition von natürlichen Transformationen. Wir veranschaulichen natürliche Transformationen durch möglichst viele Beispiele, insbesondere die, welche für die Topologie von besonderem Interesse sind. Anschließend beschäftigen wir uns mit der Frage, wann Funktoren als äquivalent betrachtet werden können. Zuletzt klären wir den Begriff der Darstellbarkeit für kovariante und kontravariante Funktoren. Mit Hilfe dieser Begriffe soll es uns gelingen, dass Yoneda-Lemma zu beweisen, welches oft innerhalb der Kategorientheorie als wichtigstes Ergebnis angesehen wird.
 \end{abstract}
 \section{Natürliche Transformationen}
 Im Folgenden seien $\mathcal{A},\mathcal{B}$ Kategorien, und $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren. Um natürliche Transformationen definieren zu können, brauchen wir die folgenden Daten und Eigenschaften:
 \begin{itemize}
-	\item Einen Morphismus $\tau^{X}: F(X) \rightarrow G(X)$ für jedes Objekt $X \in \mathcal{A}$.
+	\item Einen Morphismus $\tau_{X}: F(X) \rightarrow G(X)$ für jedes Objekt $X \in \mathcal{A}$.
 	\item Die Eigenschaft falls $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist, so gilt
 	\begin{equation}
-		G(f) \circ \tau^{X} = \tau^{Y} \circ F(f).
+		G(f) \circ \tau_{X} = \tau_{Y} \circ F(f).
 	\end{equation}
 \end{itemize}
 Dies führt uns zu folgender Definition.
 
 \begin{definition}
-Eine \textbf{natürliche Transformation} $\tau: F \Longrightarrow G$ von einem Funktor $F$ zu einem zweiten Funktor $G$ ordnet jedem Objekt $X \in \mathcal{A}$ einen Homomorphismus $\tau^{X}: F(X) \rightarrow G(X)$ in $\mathcal{B}$ zu, auch \textbf{Komponente von $\tau$ bei $X$} genannt, so dass für jeden Morphismus $f: X \rightarrow Y$ in $\mathcal{A}$ das folgende Diagramm kommutiert:
+Eine \textbf{natürliche Transformation} $\tau: F \Longrightarrow G$ von einem Funktor $F$ zu einem zweiten Funktor $G$ ordnet jedem Objekt $X \in \mathcal{A}$ einen Homomorphismus $\tau_{X}: F(X) \rightarrow G(X)$ in $\mathcal{B}$ zu, auch \textbf{Komponente von $\tau$ bei $X$} genannt, so dass für jeden Morphismus $f: X \rightarrow Y$ in $\mathcal{A}$ das folgende Diagramm kommutiert:
 \end{definition}
 \begin{equation}
 	\begin{tikzcd}
-	F(X) \arrow[rr, "F(f)" description] \arrow[d, "\tau^{X}" description] &  & F(Y) \arrow[d, "\tau^{Y}" description] \\
+	F(X) \arrow[rr, "F(f)" description] \arrow[d, "\tau_{X}" description] &  & F(Y) \arrow[d, "\tau_{Y}" description] \\
 	G(X) \arrow[rr, "G(f)" description]                                   &  & G(Y)                                  
 	\end{tikzcd}.
 \end{equation}
-Als Formel lässt sich das Diagramm ausdrücken durch folgende Gleichung: $\tau^{Y} \circ F(f) = G(f) \circ \tau^{X}$. Für Funktoren $F,G$ wird mit $\text{Mor}_{\text{Fun}}(F,G)$ die \textbf{Menge der natürlichen Transformationen} von $F$ nach $G$ bezeichnet.
+Als Formel lässt sich das Diagramm ausdrücken durch folgende Gleichung: $\tau_{Y} \circ F(f) = G(f) \circ \tau_{X}$. Für Funktoren $F,G$ wird mit $\text{Mor}_{\text{Fun}}(F,G)$ die \textbf{Menge der natürlichen Transformationen} von $F$ nach $G$ bezeichnet.
 
 \begin{remark}
-Die natürliche Transformation $\tau$ ist die Gesamtheit aller Morphismen $\tau^{X}$. In der Literatur findet sich diese Tatsache in der Notation $\tau = (\tau^{X})_{X \in \mathcal{A}}$ wieder, wobei jedes $\tau^{X}$ eine Komponente von $\tau$ ist. Man kann eine gewisse Analogie zu dem Aufbau von Folgen als Gesamtheit ihrer Terme $s = \{s_n\}_{n \in \mathbb{N}}$ sehen.
+Die natürliche Transformation $\tau$ ist die Gesamtheit aller Morphismen $\tau_{X}$. In der Literatur findet sich diese Tatsache in der Notation $\tau = (\tau_{X})_{X \in \mathcal{A}}$ wieder, wobei jedes $\tau_{X}$ eine Komponente von $\tau$ ist. Man kann eine gewisse Analogie zu dem Aufbau von Folgen als Gesamtheit ihrer Terme $s = \{s_n\}_{n \in \mathbb{N}}$ sehen.
 \end{remark}
 
 In anderen Worten ist eine natürliche Transformation eine Sammlung von Abbildungen von einem Diagramm in ein anderes. Das Besondere an diesen Abbildungen ist, dass sie kommutieren. Nehmen wir eine natürliche Transformation zwischen zwei Funktoren $\tau: F \Longrightarrow G$, dann können wir durch folgendes Diagramm eine bessere Intuition für natürliche Transformationen gewinnen:
 \begin{equation}
 	\begin{tikzcd}
 	                                                   & {\color{red}F} \arrow[r, Rightarrow, "\tau"]                 & {\color{blue}G}, &                            &                 \\
-	{\color{red}F(X)} \arrow[dd, red] \arrow[rd, red] \arrow[rrr, "\tau^{X}"] &                                         &   & {\color{blue}G(X)} \arrow[rd, blue] \arrow[dd, blue] &                 \\
-	                                                   & {\color{red}F(Z)} \arrow[ld, red] \arrow[rrr, "\tau^{Z}", gray] &   &                            & {\color{blue}G(Z)} \arrow[ld, blue] \\
-	{\color{red}F(Y)} \arrow[rrr, "\tau^{Y}"]                       &                                         &   & {\color{blue}G(Y)}                       &                
+	{\color{red}F(X)} \arrow[dd, red] \arrow[rd, red] \arrow[rrr, "\tau_{X}"] &                                         &   & {\color{blue}G(X)} \arrow[rd, blue] \arrow[dd, blue] &                 \\
+	                                                   & {\color{red}F(Z)} \arrow[ld, red] \arrow[rrr, "\tau_{Z}", gray] &   &                            & {\color{blue}G(Z)} \arrow[ld, blue] \\
+	{\color{red}F(Y)} \arrow[rrr, "\tau_{Y}"]                       &                                         &   & {\color{blue}G(Y)}                       &                
 	\end{tikzcd}.
 \end{equation}
 Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschluss ein paar Sonderfälle und Beispiele für natürliche Transformationen.
 
 \paragraph{Sonderfälle.}
 \begin{enumerate}
-	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X \in \mathcal{A}$ auf ein einziges Objekt $Y \in \mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{Y}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $Y'$ und $\text{Id}_{Y'}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: Y \Longrightarrow Y'$.
-	\item Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ konstant für ein Objekt $Y \in \mathcal{B}$ und $G: \mathcal{A} \rightarrow \mathcal{B}$ ein beliebiger Funktor. Dann besteht die natürliche Transformation $\tau: F \Longrightarrow G$ aus Abbildungen $\tau^{X}: Y \rightarrow G(X)$, eine für jedes $X \in \mathcal{A}$. 
+	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X \in \mathcal{A}$ auf ein einziges Objekt $F(X) \in \mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{F(Y)}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $F(Y)$ und $\text{Id}_{F(Y)}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: F(X) \Longrightarrow F(Y)$.
+	\item Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ konstant für ein Objekt $X \in \mathcal{A}$ und $G: \mathcal{A} \rightarrow \mathcal{B}$ ein beliebiger Funktor. Dann besteht die natürliche Transformation $\tau: F \Longrightarrow G$ aus Abbildungen $\tau_{X}: F(X) \rightarrow G(X)$, eine für jedes $X \in \mathcal{A}$, sodass $\tau_Y = G(f) \circ \tau_X$, falls $f:X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulichen kann man das durch folgendes kommutierende Diagram, 
+	\begin{equation}
+		\begin{tikzcd}
+		               & F(X) \arrow[lddd, "\tau_X" description, bend right] \arrow[dd, "\tau_V" description] \arrow[rdd, "\tau_W" description, bend left] \arrow[ddd, "\tau_Y" description, bend left] &                 \\
+		               &                                                                                                                                                                             &                 \\
+		               & G(V) \arrow[r] \arrow[ld]                                                                                                                                                   & G(W) \arrow[ld] \\
+		G(X) \arrow[r, "G(f)"] & G(Y)                                                                                                                                                                        &                
+		\end{tikzcd},
+	\end{equation}
+	wobei $X,Y,V,W \in \mathcal{A}$ sind und die Knoten und Kanten des unteren Vierecks das durch $G$ gegebene Diagramm meint. Die Gleichung $\tau_Y = G(f) \circ \tau_X$, die erfüllt werden muss, bringt jeweils die Dreiecke im Tetraeder zum kommutieren. In diesem Fall heißt $\tau$ \textbf{Kegel über $G$}.
+	\item Sei andererseits $G$ konstant bei $X \in \mathcal{A}$, dann besteht eine natürliche Transformation aus einer Familie von Abbildungen $\tau_X: F(X) \rightarrow G(Y)$, sodass $\tau_Y \circ F(f) = \tau_X$ gilt, genau dann wenn $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulicht durch ein kommutierendes Diagramm,
+	\begin{equation}
+		\begin{tikzcd}
+		                                                         & F(V) \arrow[ld] \arrow[r] \arrow[ddd, "\tau_V" description, bend right, shift right] & F(W) \arrow[ld] \arrow[lddd, "\tau_W"', bend left] \\
+		F(X) \arrow[r, "F(f)"] \arrow[rdd, "\tau_X", bend right] & F(Y) \arrow[dd, "\tau_Y"', bend left]                                                &                                                    \\
+		                                                         &                                                                                      &                                                    \\
+		                                                         & G(X)                                                                                 &                                                   
+		\end{tikzcd}
+	\end{equation}
+	müssen die Seiten des Diagramms kommutieren. Dieses Diagramm heißt \textbf{Kegel unter $F$}, oder manchmal auch \textbf{Kokegel}.
+	\item Seien $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren und $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$. Falls jede Kompontente $\tau_X: F(X) \rightarrow G(X)$ von $\tau$ ein Isomorphismus ist, dann ist die Bedingung $\tau_Y \circ F(f) = G(f) \circ \tau_X$ äquivalent zu $F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X$, da $\tau_Y$ invertierbar ist. In einem kommutierenden Diagramm lässt sich das wie folgt darstellen:
+	\begin{equation}
+		\begin{tikzcd}
+		{\tau_Y \circ F(f) = G(f) \circ \tau_X,}   &                          &  & F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X,            &                                \\
+		F(X) \arrow[r, "F(f)"] \arrow[d, "\tau_X"] & F(Y) \arrow[d, "\tau_Y"] &  & F(X) \arrow[r, "\tau_y^{-1} \circ G(f) \circ \tau_X"] & F(Y)                           \\
+		G(X) \arrow[r, "G(f)"]                     & {G(Y),}                  &  & G(X) \arrow[u, "\tau_X^{-1}"] \arrow[r, "G(f)"]       & G(Y). \arrow[u, "\tau_Y^{-1}"]
+		\end{tikzcd}
+	\end{equation}
+	Wenn also jedes $\tau_X$ ein Isomorphismus ist, ist die Natürlichkeitsbedingung vergleichbar mit der Konjugation. Sie erinnert auch an eine Homotopie von $G$ nach $F$. Beide Sichtweisen legen nahe, dass, wenn jedes $\tau_X$ ein Isomorphismus ist, $F$ und $G$ bis auf Umbenennung ihrer Elemente wirklich derselbe Funktor sind. Wenn dies der Fall ist, wird die natürliche Transformation $\tau$ als \textbf{natürlicher Isomorphismus} bezeichnet, und $F$ und $G$ werden als \textbf{natürlich isomorph} bezeichnet.
 \end{enumerate}
+
+\begin{remark}
+Ohne Zweifel ist man bereits über den Begriff des (Co)limes in der Kategorientheorie gestoßen. In den obigen Beispielen der Kegel und Kokegel werden bereits einige (Co)limites beschrieben. Beispiele wären die leere Menge, die Einpunktmenge, der Schnitt, die Vereinigung, das Produkt von Mengen, der Kern einer Gruppe, der Quotient von topologischen Räumen, die direkte Summe zweier Vektorräume, das freie Produkt von Gruppen oder der Pullback über ein Faserbündel. Jedes ist ein Spezialfall, welches eine Art universellen Kegel über einen bestimmten Funktor bildet.
+\end{remark}
 
 \section{Äquivalenzen von Funktoren}
 
