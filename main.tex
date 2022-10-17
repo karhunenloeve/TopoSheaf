@@ -6,6 +6,7 @@
 \usetikzlibrary{babel}
 \usepackage{xcolor}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+\usepackage{url}
 
 \theoremstyle{plain}
 \newtheorem{thm}{Satz}[section]
@@ -25,7 +26,7 @@
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep, nolistsep}
 
-\title{Natürliche Transformationen, Äquivalenzen von Kategorien, darstellbare Funktoren und das Yoneda Lemma}
+\title{Natürliche Transformationen, Äquivalenzen von Kategorien, darstellbare Funktoren und das Lemma von Yoneda}
 \author{Luciano Melodia}
 \date{25.10.2022}
 
@@ -34,10 +35,11 @@
 \maketitle
 
 \begin{abstract}
-In diesem Skript behandeln wir die Definition von natürlichen Transformationen. Wir veranschaulichen natürliche Transformationen durch möglichst viele Beispiele, insbesondere die, welche für die Topologie von besonderem Interesse sind. Anschließend beschäftigen wir uns mit der Frage, wann Kategorien als äquivalent betrachtet werden können. Zuletzt klären wir den Begriff der Darstellbarkeit für kovariante und kontravariante Funktoren.
+In diesem Skript behandeln wir die Definition von natürlichen Transformationen. Wir veranschaulichen natürliche Transformationen durch möglichst viele Beispiele, insbesondere solche, die für die Topologie von besonderem Interesse sind. Dann befassen wir uns mit der Frage, wann Kategorien als äquivalent angesehen werden können. Schließlich klären wir den Begriff der Darstellbarkeit für kovariante und kontravariante Funktoren.
 
-Mit Hilfe dieser Begriffe soll es uns gelingen, dass Yoneda-Lemma zu beweisen, welches oft innerhalb der Kategorientheorie als wichtigstes mathematisches Ergebnis angesehen wird. Es beschreibt die Menge der natürlichen Transformationen zwischen einem $\textbf{Hom}$-Funktor und einem beliebigen weiteren Funktor.
+Mit Hilfe dieser Begriffe wird es uns gelingen, das Lemma von Yoneda zu beweisen, das oft als das wichtigste mathematische Ergebnis innerhalb der Kategorientheorie angesehen wird. Es beschreibt die Menge der natürlichen Transformationen zwischen einem $\textbf{Hom}$-Funktor und einem beliebigen anderen Funktor.
 \end{abstract}
+
 \section{Natürliche Transformationen}
 Im Folgenden seien $\mathcal{A},\mathcal{B}$ Kategorien, und $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren. Um natürliche Transformationen definieren zu können, brauchen wir die folgenden Daten und Eigenschaften:
 \begin{itemize}
@@ -214,11 +216,9 @@ Damit ist gezeigt, dass $\mathcal{A}$ und $\mathcal{B}$ äquivalent sind.
 
 
 \begin{thebibliography}{9}
-\bibitem{texbook}
-Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
-
-\bibitem{lamport94}
-Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
-Wesley, Massachusetts, 2nd ed.
+\bibitem{A} Peter Fiebig (2020) \emph{Einführung in die Darstellungstheorie. Vorlesungsskript}, Friedrich-Alexander Universität Erlangen-Nürnberg, Erlangen.
+\bibitem{B} Tai-Danae Bradley, Tyler Bryson, and John Terilla (2020) \emph{Topology. A Categorical Approach}, MIT Press, Cambridge.
+\bibitem{B} Tai-Danae Bradley (2017) \emph{What is a Functor? Definition and Examples, Part I + II}, URL: \url{https://www.math3ma.com/blog/what-is-a-functor-part-1}, eingesehen am 17.20.2022.
+\bibitem{B} Tai-Danae Bradley (2017) \emph{What is a Natural Transformation? Definition and Examples, Part I + II}, URL: \url{https://www.math3ma.com/blog/what-is-a-natural-transformation-1}, eingesehen am 17.20.2022.
 \end{thebibliography}
 \end{document}
