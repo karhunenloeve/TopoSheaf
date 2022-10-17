@@ -1,14 +1,24 @@
 \documentclass{article}
-\usepackage{amsmath}
 \usepackage{a4wide}
-\usepackage{amssymb}
-\usepackage{amsfonts}
 \usepackage{tikz}
 \usepackage{tikz-cd}
-\usepackage{euler}
 \usepackage{xcolor}
-\newtheorem{definition}{Definition}[section]
-\newtheorem{remark}{Bemerkung}[section]
+\usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
+
+\theoremstyle{plain}
+\newtheorem{thm}{Satz}[section]
+\newtheorem{lem}[thm]{Lemma}
+\newtheorem{prop}[thm]{Proposition}
+\newtheorem*{cor}{Korollar}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}[section]
+\newtheorem{conj}{Vermutung}[section]
+\newtheorem{exmp}{Beispiel}[section]
+
+\theoremstyle{remark}
+\newtheorem*{rem}{Anmerkung}
+\newtheorem*{note}{Note}
 
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep, nolistsep}
@@ -35,9 +45,9 @@ Im Folgenden seien $\mathcal{A},\mathcal{B}$ Kategorien, und $F,G: \mathcal{A} \
 \end{itemize}
 Dies führt uns zu folgender Definition.
 
-\begin{definition}
+\begin{defn}
 Eine \textbf{natürliche Transformation} $\tau: F \Longrightarrow G$ von einem Funktor $F$ zu einem zweiten Funktor $G$ ordnet jedem Objekt $X \in \mathcal{A}$ einen Homomorphismus $\tau_{X}: F(X) \rightarrow G(X)$ in $\mathcal{B}$ zu, auch \textbf{Komponente von $\tau$ bei $X$} genannt, so dass für jeden Morphismus $f: X \rightarrow Y$ in $\mathcal{A}$ das folgende Diagramm kommutiert:
-\end{definition}
+\end{defn}
 \begin{equation}
 	\begin{tikzcd}
 	F(X) \arrow[rr, "F(f)" description] \arrow[d, "\tau_{X}" description] &  & F(Y) \arrow[d, "\tau_{Y}" description] \\
@@ -46,9 +56,9 @@ Eine \textbf{natürliche Transformation} $\tau: F \Longrightarrow G$ von einem F
 \end{equation}
 Als Formel lässt sich das Diagramm ausdrücken durch folgende Gleichung: $\tau_{Y} \circ F(f) = G(f) \circ \tau_{X}$. Für Funktoren $F,G$ wird mit $\text{Mor}_{\text{Fun}}(F,G)$ die \textbf{Menge der natürlichen Transformationen} von $F$ nach $G$ bezeichnet.
 
-\begin{remark}
-Die natürliche Transformation $\tau$ ist die Gesamtheit aller Morphismen $\tau_{X}$. In der Literatur findet sich diese Tatsache in der Notation $\tau = (\tau_{X})_{X \in \mathcal{A}}$ wieder, wobei jedes $\tau_{X}$ eine Komponente von $\tau$ ist. Man kann eine gewisse Analogie zu dem Aufbau von Folgen als Gesamtheit ihrer Terme $s = \{s_n\}_{n \in \mathbb{N}}$ sehen.
-\end{remark}
+\begin{rem}
+Die natürliche Transformation $\tau$ ist die Gesamtheit aller Morphismen $\tau_{X}$. In der Literatur findet sich diese Tatsache in der Notation $\tau = (\tau_{X})_{X \in \mathcal{A}}$ wieder, wobei jedes $\tau_{X}$ eine Komponente von $\tau$ ist. Man kann eine gewisse Analogie zu dem Aufbau von Folgen als Gesamtheit ihrer Terme $s = (s_n)_{n \in \mathbb{N}}$ sehen.
+\end{rem}
 
 In anderen Worten ist eine natürliche Transformation eine Sammlung von Abbildungen von einem Diagramm in ein anderes. Das Besondere an diesen Abbildungen ist, dass sie kommutieren. Nehmen wir eine natürliche Transformation zwischen zwei Funktoren $\tau: F \Longrightarrow G$, dann können wir durch folgendes Diagramm eine bessere Intuition für natürliche Transformationen gewinnen:
 \begin{equation}
@@ -61,7 +71,7 @@ In anderen Worten ist eine natürliche Transformation eine Sammlung von Abbildun
 \end{equation}
 Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschluss ein paar Sonderfälle und Beispiele für natürliche Transformationen.
 
-\paragraph{Sonderfälle.}
+\paragraph{Beispiele:}
 \begin{enumerate}
 	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X \in \mathcal{A}$ auf ein einziges Objekt $F(X) \in \mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{F(Y)}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $F(Y)$ und $\text{Id}_{F(Y)}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: F(X) \Longrightarrow F(Y)$.
 	\item Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ konstant für ein Objekt $X \in \mathcal{A}$ und $G: \mathcal{A} \rightarrow \mathcal{B}$ ein beliebiger Funktor. Dann besteht die natürliche Transformation $\tau: F \Longrightarrow G$ aus Abbildungen $\tau_{X}: F(X) \rightarrow G(X)$, eine für jedes $X \in \mathcal{A}$, sodass $\tau_Y = G(f) \circ \tau_X$, falls $f:X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulichen kann man das durch folgendes kommutierende Diagram, 
@@ -84,7 +94,7 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 		\end{tikzcd}
 	\end{equation}
 	müssen die Seiten des Diagramms kommutieren. Dieses Diagramm heißt \textbf{Kegel unter $F$}, oder manchmal auch \textbf{Kokegel}.
-	\item Seien $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren und $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$. Falls jede Kompontente $\tau_X: F(X) \rightarrow G(X)$ von $\tau$ ein Isomorphismus ist, dann ist die Bedingung $\tau_Y \circ F(f) = G(f) \circ \tau_X$ äquivalent zu $F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X$, da $\tau_Y$ invertierbar ist. In einem kommutierenden Diagramm lässt sich das wie folgt darstellen:
+	\item Seien $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren und $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$. Falls jede Kompontente $\tau_X: F(X) \rightarrow G(X)$ von $\tau$ ein Isomorphismus ist, dann ist die Bedingung $\tau_Y \circ F(f) = G(f) \circ \tau_X$ äquivalent zu $F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X$, da $\tau_Y$ invertierbar ist. In einer Kategorie ist der Isomorphismusbegriff so definiert, dass für einen Morphismus $f:X \rightarrow Y$ und $g:Y \rightarrow X$ gilt $g \circ f = \text{Id}_X$ und $f \circ g = \text{Id}_Y$, genau dann wenn $X$ und $Y$ isomorph sind. In einem kommutierenden Diagramm lässt sich das wie folgt darstellen:
 	\begin{equation}
 		\begin{tikzcd}
 		{\tau_Y \circ F(f) = G(f) \circ \tau_X,}   &                          &  & F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X,            &                                \\
@@ -93,11 +103,45 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 		\end{tikzcd}
 	\end{equation}
 	Wenn also jedes $\tau_X$ ein Isomorphismus ist, ist die Natürlichkeitsbedingung vergleichbar mit der Konjugation. Sie erinnert auch an eine Homotopie von $G$ nach $F$. Beide Sichtweisen legen nahe, dass, wenn jedes $\tau_X$ ein Isomorphismus ist, $F$ und $G$ bis auf Umbenennung ihrer Elemente wirklich derselbe Funktor sind. Wenn dies der Fall ist, wird die natürliche Transformation $\tau$ als \textbf{natürlicher Isomorphismus} bezeichnet, und $F$ und $G$ werden als \textbf{natürlich isomorph} bezeichnet.
+	\item Wir betrachten eine Gruppe $G$. Dann ist $\textbf{B}G$ mit einem Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ eine Kategorie. Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, welche Kompatibel zueinander sind ($\text{Im}(h) = g^{-1}$), dass auch $g \circ h : G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, dass Gruppenoperationen bereits assoziativ sind. Nun können wir einen Funktor $F: \textbf{B}G \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{B}G$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet. Die Funktorialität determiniert also für jeden Funktor eine linke Gruppenoperation und das Bild eines einzelnen Objekts unter diesem Funktor ist eine $G$-Menge.
+
+	Seien $C,D: \textbf{B}G \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ und $D(G) = N$ für $M,N \in \textbf{Set}$ und sei $g: G \rightarrow G$ ein Element der Gruppe. Dann ist $\tau: C \Longrightarrow D$ eine natürliche Transformation, bestehend aus genau einer Funktion $\tau: M \rightarrow N$, sodass $\tau(g(m)) = g(\tau(m))$, für jedes $m \in M$. Diese Gleichung lässt sich mit dem folgenden kommutierenden Diagramm noch einmal veranschaulichen.
+	\begin{equation}
+		\begin{tikzcd}
+		M \arrow[rrr, "\tau" description] \arrow[ddd, "g\cdot-" description] &                                         &                            & N \arrow[ddd, "g\cdot-" description] \\
+		                                                                     & m \arrow[d, maps to] \arrow[r, maps to] & \tau(m) \arrow[d, maps to] &                                      \\
+		                                                                     & gm \arrow[r, maps to]                   & \tau(g(m)) = g(\tau(m))    &                                      \\
+		M \arrow[rrr, "\tau" description]                                    &                                         &                            & N                                   
+		\end{tikzcd}
+	\end{equation}
+	Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}.
 \end{enumerate}
 
-\begin{remark}
 Ohne Zweifel ist man bereits über den Begriff des (Co)limes in der Kategorientheorie gestoßen. In den obigen Beispielen der Kegel und Kokegel werden bereits einige (Co)limites beschrieben. Beispiele wären die leere Menge, die Einpunktmenge, der Schnitt, die Vereinigung, das Produkt von Mengen, der Kern einer Gruppe, der Quotient von topologischen Räumen, die direkte Summe zweier Vektorräume, das freie Produkt von Gruppen oder der Pullback über ein Faserbündel. Jedes ist ein Spezialfall, welches eine Art universellen Kegel über einen bestimmten Funktor bildet.
-\end{remark}
+
+Wir betrachten nun ein typisches Beispiel für natürliche Transformtionen, für das wir Beweisen wollen, dass es sich wirklich um eine natürliche Transformation handelt. Sei $V$ dafür ein endlich dimensionaler Vektorraum über einem Körper $\mathbb{K}$, dann ist dieser isomorph zum Dualraum $V^*$ sowie isomorph zum Doppeldualraum $V^{**}$. Beide sind Vektorräume über $\mathbb{K}$:
+\begin{align}
+	V^* = \{ \text{lineare Abbildungen} \ V \rightarrow \mathbb{K} \}, \\
+	V^{**} = \{ \text{lineare Abbildungen} \ V^* \rightarrow \mathbb{K} \}.
+\end{align}
+Im ersten Fall gilt, falls $\{v_1, \ldots, v_n\}$ eine Basis von $V$ ist, dass auch $\{v_1^*, \ldots, v_n^*\}$ eine Basis von $V^*$ ist, wobei für jedes $i \in \{1, \ldots, n\}$ die Abbildung $v_i^*: V \rightarrow \mathbb{K}$ gegeben ist durch
+\begin{equation}
+	v_i^*(v_j) = \begin{cases}
+	1, \quad \text{if} \ i = j, \\
+	0, \quad \text{if} \ i \neq j.
+	\end{cases}
+\end{equation}
+Wie bereits aus der linearen Algebra bekannt ist, handelt es sich bei $V \rightarrow V^*$ nicht um einen kanonischen Isomorphismus. Unterschiedliche Basen erzeugen unterschiedliche Isomorphismen. Man kann sogar keinen Isomorphismus angeben, ohne sich vorher auf eine Basis festzulegen. Andererseits gibt es einen Isomorphismus von $V \rightarrow V^{**}$, der keine Wahl einer Basis benötigt: für jeden Vektor $v \in V$ und ein Element $f: V \rightarrow \mathbb{K}$, also $f \in V^*$, sei $\text{eval}_v(f) := f(v)$ die Evaluationsabbildung. Diese Abbildung wird in der Literatur häufig als \textbf{natürlicher Isomorphismus} bezeichnet. Was lässt sich für solche Isomorphismen also Schlussfolgern?
+
+\begin{lem}
+Die Gesamtheit aller Evaluationsabbildungen ist eine natürliche Transformation zwischen zwei Funktoren.
+\end{lem}
+
+\begin{proof}
+Um das zu sehen, sei $(-)^{**}: \textbf{Vect}_{\mathbb{K}} \rightarrow \textbf{Vect}_{\mathbb{K}}$ der doppelte Dualfunktor, der jeden Vektorraum $V$ auf seinen Doppeldualraum $V^{**}$ abbildet und die linearen Abbildungen $\phi: V \rightarrow W$ auf $\phi^{**}: V^{**} \rightarrow W^{**}$.
+\end{proof}
+
+
 
 \section{Äquivalenzen von Funktoren}
 
