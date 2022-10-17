@@ -23,7 +23,7 @@
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep, nolistsep}
 
-\title{Natürliche Transformationen, Äquivalenzen von Funktoren, darstellbare Funktoren und das Yoneda Lemma}
+\title{Natürliche Transformationen, Äquivalenzen von Kategorien, darstellbare Funktoren und das Yoneda Lemma}
 \author{Luciano Melodia}
 \date{25.10.2022}
 
@@ -32,7 +32,9 @@
 \maketitle
 
 \begin{abstract}
-In diesem Skript behandeln wir die Definition von natürlichen Transformationen. Wir veranschaulichen natürliche Transformationen durch möglichst viele Beispiele, insbesondere die, welche für die Topologie von besonderem Interesse sind. Anschließend beschäftigen wir uns mit der Frage, wann Funktoren als äquivalent betrachtet werden können. Zuletzt klären wir den Begriff der Darstellbarkeit für kovariante und kontravariante Funktoren. Mit Hilfe dieser Begriffe soll es uns gelingen, dass Yoneda-Lemma zu beweisen, welches oft innerhalb der Kategorientheorie als wichtigstes Ergebnis angesehen wird.
+In diesem Skript behandeln wir die Definition von natürlichen Transformationen. Wir veranschaulichen natürliche Transformationen durch möglichst viele Beispiele, insbesondere die, welche für die Topologie von besonderem Interesse sind. Anschließend beschäftigen wir uns mit der Frage, wann Kategorien als äquivalent betrachtet werden können. Zuletzt klären wir den Begriff der Darstellbarkeit für kovariante und kontravariante Funktoren.
+
+Mit Hilfe dieser Begriffe soll es uns gelingen, dass Yoneda-Lemma zu beweisen, welches oft innerhalb der Kategorientheorie als wichtigstes mathematisches Ergebnis angesehen wird. Es beschreibt die Menge der natürlichen Transformationen zwischen einem $\textbf{Hom}$-Funktor und einem beliebigen weiteren Funktor.
 \end{abstract}
 \section{Natürliche Transformationen}
 Im Folgenden seien $\mathcal{A},\mathcal{B}$ Kategorien, und $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren. Um natürliche Transformationen definieren zu können, brauchen wir die folgenden Daten und Eigenschaften:
@@ -45,7 +47,7 @@ Im Folgenden seien $\mathcal{A},\mathcal{B}$ Kategorien, und $F,G: \mathcal{A} \
 \end{itemize}
 Dies führt uns zu folgender Definition.
 
-\begin{defn}
+\begin{defn}[Natürliche Transformationen]
 Eine \textbf{natürliche Transformation} $\tau: F \Longrightarrow G$ von einem Funktor $F$ zu einem zweiten Funktor $G$ ordnet jedem Objekt $X \in \mathcal{A}$ einen Homomorphismus $\tau_{X}: F(X) \rightarrow G(X)$ in $\mathcal{B}$ zu, auch \textbf{Komponente von $\tau$ bei $X$} genannt, so dass für jeden Morphismus $f: X \rightarrow Y$ in $\mathcal{A}$ das folgende Diagramm kommutiert:
 \end{defn}
 \begin{equation}
@@ -103,20 +105,39 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 		\end{tikzcd}
 	\end{equation}
 	Wenn also jedes $\tau_X$ ein Isomorphismus ist, ist die Natürlichkeitsbedingung vergleichbar mit der Konjugation. Sie erinnert auch an eine Homotopie von $G$ nach $F$. Beide Sichtweisen legen nahe, dass, wenn jedes $\tau_X$ ein Isomorphismus ist, $F$ und $G$ bis auf Umbenennung ihrer Elemente wirklich derselbe Funktor sind. Wenn dies der Fall ist, wird die natürliche Transformation $\tau$ als \textbf{natürlicher Isomorphismus} bezeichnet, und $F$ und $G$ werden als \textbf{natürlich isomorph} bezeichnet.
-	\item Wir betrachten eine Gruppe $G$. Dann ist $\textbf{B}G$ mit einem Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ eine Kategorie. Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, welche Kompatibel zueinander sind ($\text{Im}(h) = g^{-1}$), dass auch $g \circ h : G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, dass Gruppenoperationen bereits assoziativ sind. Nun können wir einen Funktor $F: \textbf{B}G \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{B}G$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet. Die Funktorialität determiniert also für jeden Funktor eine linke Gruppenoperation und das Bild eines einzelnen Objekts unter diesem Funktor ist eine $G$-Menge.
+\end{enumerate}
 
-	Seien $C,D: \textbf{B}G \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ und $D(G) = N$ für $M,N \in \textbf{Set}$ und sei $g: G \rightarrow G$ ein Element der Gruppe. Dann ist $\tau: C \Longrightarrow D$ eine natürliche Transformation, bestehend aus genau einer Funktion $\tau: M \rightarrow N$, sodass $\tau(g(m)) = g(\tau(m))$, für jedes $m \in M$. Diese Gleichung lässt sich mit dem folgenden kommutierenden Diagramm noch einmal veranschaulichen.
+\subsection{Die Kategorie $\textbf{B}G$ der Gruppen}
+Wir betrachten eine Gruppe $G$.
+
+\begin{prop}
+Dann ist $\textbf{B}G$ mit einem Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ eine Kategorie.
+\end{prop}
+
+\begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, welche Kompatibel zueinander sind, dass auch $g \circ h : G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Kompatibilität meint, dass das Bild von $h$ gleich dem Urbild von $g$ ist, $\text{Im}(h) = g^{-1}$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da Gruppenoperationen bereits assoziativ sind.
+\end{proof}
+
+Nun können wir einen Funktor $F: \textbf{B}G \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{B}G$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet.
+
+\begin{prop}
+Die Funktorialität determiniert für jeden Funktor eine linke Gruppenoperation und das Bild eines einzelnen Objekts unter diesem Funktor ist eine $G$-Menge.
+\end{prop}
+
+\begin{proof}
+Seien $C,D: \textbf{B}G \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ und $D(G) = N$ für $M,N \in \textbf{Set}$ und sei $g: G \rightarrow G$ ein Element der Gruppe. Dann ist $\tau: C \Longrightarrow D$ eine natürliche Transformation, bestehend aus genau einer Funktion $\tau: M \rightarrow N$, sodass $\tau(g(m)) = g(\tau(m))$, für jedes $m \in M$.
+\end{proof}
+
+Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}. Diese Gleichung lässt sich mit dem nachfolgenden kommutierenden Diagramm noch einmal veranschaulichen.
 	\begin{equation}
 		\begin{tikzcd}
 		M \arrow[rrr, "\tau" description] \arrow[ddd, "g\cdot-" description] &                                         &                            & N \arrow[ddd, "g\cdot-" description] \\
 		                                                                     & m \arrow[d, maps to] \arrow[r, maps to] & \tau(m) \arrow[d, maps to] &                                      \\
 		                                                                     & gm \arrow[r, maps to]                   & \tau(g(m)) = g(\tau(m))    &                                      \\
-		M \arrow[rrr, "\tau" description]                                    &                                         &                            & N                                   
+		M \arrow[rrr, "\tau" description]                                    &                                         &                            & N.                                   
 		\end{tikzcd}
 	\end{equation}
-	Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}.
-\end{enumerate}
 
+\subsection{Die Kategorie $\textbf{Vect}_{\mathbb{K}}$ der $\mathbb{K}$-Vektorräume}
 Ohne Zweifel ist man bereits über den Begriff des (Co)limes in der Kategorientheorie gestoßen. In den obigen Beispielen der Kegel und Kokegel werden bereits einige (Co)limites beschrieben. Beispiele wären die leere Menge, die Einpunktmenge, der Schnitt, die Vereinigung, das Produkt von Mengen, der Kern einer Gruppe, der Quotient von topologischen Räumen, die direkte Summe zweier Vektorräume, das freie Produkt von Gruppen oder der Pullback über ein Faserbündel. Jedes ist ein Spezialfall, welches eine Art universellen Kegel über einen bestimmten Funktor bildet.
 
 Wir betrachten nun ein typisches Beispiel für natürliche Transformtionen, für das wir Beweisen wollen, dass es sich wirklich um eine natürliche Transformation handelt. Sei $V$ dafür ein endlich dimensionaler Vektorraum über einem Körper $\mathbb{K}$, dann ist dieser isomorph zum Dualraum $V^*$ sowie isomorph zum Doppeldualraum $V^{**}$. Beide sind Vektorräume über $\mathbb{K}$:
@@ -143,7 +164,26 @@ Um das zu sehen, sei $(-)^{**}: \textbf{Vect}_{\mathbb{K}} \rightarrow \textbf{V
 
 
 
-\section{Äquivalenzen von Funktoren}
+\section{Äquivalenzen von Kategorien}
+Äquivalente Kategorien sind identisch, bis auf die Tatsache, dass sie eine unterschiedliche Anzahl isomorpher Kopien eines Objekts enthalten können. Diese Aussage wollen wir in diesem Abschnitt präzisieren, indem wir definieren wann zwei Kategorien als äquivalent gelten. Seien dazu $\mathcal{A}, \mathcal{B}$ Kategorien. Man könnte die Äquivalenz von Kategorien wie folgt definieren:
+
+\begin{defn}[Äquivalente Kategorien]
+Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ heißen \textbf{äquivalent}, falls es Funktoren $F: \mathcal{A} \rightarrow \mathcal{B}$ und $G: \mathcal{B} \rightarrow \mathcal{A}$ gibt, so dass der Funktor $F \circ G$ äquivalent ist zu $\text{Id}_{\mathcal{B}}$ und der Funktor $G \circ F$ äquivalent ist zu $\text{Id}_\mathcal{A}$.
+\end{defn}
+
+Diese Definition ist jedoch nicht besonders nützlich. Es ist nicht praktikabel etwas wie eine Inverse von Funktoren zu definieren, da das Auffinden einer solchen Inverse sich meist als äußerst schwierig herausstellt. Die folgende Definition schafft daher Abhilfe:
+
+\begin{defn}[Treue und volltreue Funktoren]
+Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt
+\begin{enumerate}
+	\item \textbf{treu}, falls für alle Objekte $X,Y \in \mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ injektiv ist.
+	\item \textbf{volltreu}, falls für alle Objekte $X$ und $Y$ in $\mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ eine Bijektion ist.
+\end{enumerate}
+\end{defn}
+
+\begin{defn}[Äquivalenz von Kategorien]
+
+\end{defn}
 
 \section{Darstellbare Funktoren}
 
