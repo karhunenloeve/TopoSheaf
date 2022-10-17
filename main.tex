@@ -1,4 +1,4 @@
-\documentclass{article}
+\documentclass[leqno]{article}
 \usepackage[ngerman]{babel}
 \usepackage{a4wide}
 \usepackage{tikz}
@@ -93,7 +93,7 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 	\item Sei andererseits $G$ konstant bei $X \in \mathcal{A}$, dann besteht eine natürliche Transformation aus einer Familie von Abbildungen $\tau_X: F(X) \rightarrow G(Y)$, sodass $\tau_Y \circ F(f) = \tau_X$ gilt, genau dann wenn $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulicht durch ein kommutierendes Diagramm,
 	\begin{equation}
 		\begin{tikzcd}
-		                                                         & F(V) \arrow[ld] \arrow[r] \arrow[ddd, "\tau_V" description, bend right, shift right] & F(W) \arrow[ld] \arrow[lddd, "\tau_W"', bend left] \\
+		                                                         & F(V) \arrow[ld] \arrow[r] \arrow[ddd, "\tau_V" description, bend right, shift left = 0.5] & F(W) \arrow[ld] \arrow[lddd, "\tau_W"', bend left] \\
 		F(X) \arrow[r, "F(f)"] \arrow[rdd, "\tau_X", bend right] & F(Y) \arrow[dd, "\tau_Y"', bend left]                                                &                                                    \\
 		                                                         &                                                                                      &                                                    \\
 		                                                         & G(X)                                                                                 &                                                   
@@ -102,9 +102,12 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 	müssen die Seiten des Diagramms kommutieren. Dieses Diagramm heißt \textbf{Kegel unter $F$}, oder manchmal auch \textbf{Kokegel}.
 	\item Seien $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren und $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$. Falls jede Kompontente $\tau_X: F(X) \rightarrow G(X)$ von $\tau$ ein Isomorphismus ist, dann ist die Bedingung $\tau_Y \circ F(f) = G(f) \circ \tau_X$ äquivalent zu $F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X$, da $\tau_Y$ invertierbar ist. In einer Kategorie ist der Isomorphismusbegriff so definiert, dass für einen Morphismus $f:X \rightarrow Y$ und $g:Y \rightarrow X$ gilt $g \circ f = \text{Id}_X$ und $f \circ g = \text{Id}_Y$, genau dann wenn $X$ und $Y$ isomorph sind. In einem kommutierenden Diagramm lässt sich das wie folgt darstellen:
 	\begin{equation}
+				\tau_Y \circ F(f) = G(f) \circ \tau_X, \hspace{1.5cm} F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X,
+	\end{equation}
+	\vspace{-0,5cm}
+	\begin{equation}
 		\begin{tikzcd}
-		{\tau_Y \circ F(f) = G(f) \circ \tau_X,}   &                          &  & F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X,            &                                \\
-		F(X) \arrow[r, "F(f)"] \arrow[d, "\tau_X"] & F(Y) \arrow[d, "\tau_Y"] &  & F(X) \arrow[r, "\tau_y^{-1} \circ G(f) \circ \tau_X"] & F(Y)                           \\
+		F(X) \arrow[r, "F(f)"] \arrow[d, "\tau_X"] & F(Y) \arrow[d, "\tau_Y"] &  & F(X) \arrow[r, "F(f)"] & F(Y)                           \\
 		G(X) \arrow[r, "G(f)"]                     & {G(Y),}                  &  & G(X) \arrow[u, "\tau_X^{-1}"] \arrow[r, "G(f)"]       & G(Y). \arrow[u, "\tau_Y^{-1}"]
 		\end{tikzcd}
 	\end{equation}
@@ -135,10 +138,8 @@ Seien $C,D: \textbf{B}G \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ u
 Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}. Diese Gleichung lässt sich mit dem nachfolgenden kommutierenden Diagramm noch einmal veranschaulichen.
 	\begin{equation}
 		\begin{tikzcd}
-		M \arrow[rrr, "\tau" description] \arrow[ddd, "g\cdot-" description] &                                         &                            & N \arrow[ddd, "g\cdot-" description] \\
-		                                                                     & m \arrow[d, maps to] \arrow[r, maps to] & \tau(m) \arrow[d, maps to] &                                      \\
-		                                                                     & gm \arrow[r, maps to]                   & \tau(g(m)) = g(\tau(m))    &                                      \\
-		M \arrow[rrr, "\tau" description]                                    &                                         &                            & N.                                   
+		M \arrow[d, "g\cdot-"] \arrow[r, "\tau"] & N \arrow[d, "g\cdot-"] & m \arrow[d, maps to] \arrow[r, maps to] & \tau(m) \arrow[d, maps to] \\
+		M \arrow[r, "\tau"]                      & {N,}                   & gm \arrow[r, maps to]                   & \tau(g(m)) = g(\tau(m)).  
 		\end{tikzcd}
 	\end{equation}
 
