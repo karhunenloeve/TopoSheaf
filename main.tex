@@ -1,7 +1,9 @@
 \documentclass{article}
+\usepackage[ngerman]{babel}
 \usepackage{a4wide}
 \usepackage{tikz}
 \usepackage{tikz-cd}
+\usetikzlibrary{babel}
 \usepackage{xcolor}
 \usepackage{amsmath,amsfonts,amssymb,amsthm,epsfig,epstopdf,titling,url,array}
 
@@ -13,7 +15,7 @@
 
 \theoremstyle{definition}
 \newtheorem{defn}{Definition}[section]
-\newtheorem{conj}{Vermutung}[section]
+\newtheorem{conj}{Behauptung}[section]
 \newtheorem{exmp}{Beispiel}[section]
 
 \theoremstyle{remark}
@@ -73,10 +75,10 @@ In anderen Worten ist eine natürliche Transformation eine Sammlung von Abbildun
 \end{equation}
 Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschluss ein paar Sonderfälle und Beispiele für natürliche Transformationen.
 
-\paragraph{Beispiele:}
+\begin{exmp}
 \begin{enumerate}
-	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X \in \mathcal{A}$ auf ein einziges Objekt $F(X) \in \mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{F(Y)}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $F(Y)$ und $\text{Id}_{F(Y)}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: F(X) \Longrightarrow F(Y)$.
-	\item Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ konstant für ein Objekt $X \in \mathcal{A}$ und $G: \mathcal{A} \rightarrow \mathcal{B}$ ein beliebiger Funktor. Dann besteht die natürliche Transformation $\tau: F \Longrightarrow G$ aus Abbildungen $\tau_{X}: F(X) \rightarrow G(X)$, eine für jedes $X \in \mathcal{A}$, sodass $\tau_Y = G(f) \circ \tau_X$, falls $f:X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulichen kann man das durch folgendes kommutierende Diagram, 
+	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X$ in $\mathcal{A}$ auf ein einziges Objekt $F(X)$ in $\mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{F(Y)}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $F(Y)$ und $\text{Id}_{F(Y)}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: F(X) \Longrightarrow F(Y)$.
+	\item Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ konstant für ein Objekt $X$ in $\mathcal{A}$ und $G: \mathcal{A} \rightarrow \mathcal{B}$ ein beliebiger Funktor. Dann besteht die natürliche Transformation $\tau: F \Longrightarrow G$ aus Abbildungen $\tau_{X}: F(X) \rightarrow G(X)$, eine für jedes $X \in \mathcal{A}$, sodass $\tau_Y = G(f) \circ \tau_X$, falls $f:X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulichen kann man das durch folgendes kommutierende Diagram, 
 	\begin{equation}
 		\begin{tikzcd}
 		               & F(X) \arrow[lddd, "\tau_X" description, bend right] \arrow[dd, "\tau_V" description] \arrow[rdd, "\tau_W" description, bend left] \arrow[ddd, "\tau_Y" description, bend left] &                 \\
@@ -106,6 +108,7 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 	\end{equation}
 	Wenn also jedes $\tau_X$ ein Isomorphismus ist, ist die Natürlichkeitsbedingung vergleichbar mit der Konjugation. Sie erinnert auch an eine Homotopie von $G$ nach $F$. Beide Sichtweisen legen nahe, dass, wenn jedes $\tau_X$ ein Isomorphismus ist, $F$ und $G$ bis auf Umbenennung ihrer Elemente wirklich derselbe Funktor sind. Wenn dies der Fall ist, wird die natürliche Transformation $\tau$ als \textbf{natürlicher Isomorphismus} bezeichnet, und $F$ und $G$ werden als \textbf{natürlich isomorph} bezeichnet.
 \end{enumerate}
+\end{exmp}
 
 \subsection{Die Kategorie $\textbf{B}G$ der Gruppen}
 Wir betrachten eine Gruppe $G$.
@@ -114,7 +117,7 @@ Wir betrachten eine Gruppe $G$.
 Dann ist $\textbf{B}G$ mit einem Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ eine Kategorie.
 \end{prop}
 
-\begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, welche Kompatibel zueinander sind, dass auch $g \circ h : G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Kompatibilität meint, dass das Bild von $h$ gleich dem Urbild von $g$ ist, $\text{Im}(h) = g^{-1}$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da Gruppenoperationen bereits assoziativ sind.
+\begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, welche kompatibel zueinander sind, dass auch $g \circ h : G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Kompatibilität meint, dass das Bild von $h$ gleich dem Urbild von $g$ ist, $\text{Im}(h) = g^{-1}$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da Gruppenoperationen bereits assoziativ sind.
 \end{proof}
 
 Nun können wir einen Funktor $F: \textbf{B}G \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{B}G$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet.
@@ -137,9 +140,9 @@ Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}. D
 		\end{tikzcd}
 	\end{equation}
 
-\subsection{Die Kategorie $\textbf{Vect}_{\mathbb{K}}$ der $\mathbb{K}$-Vektorräume}
 Ohne Zweifel ist man bereits über den Begriff des (Co)limes in der Kategorientheorie gestoßen. In den obigen Beispielen der Kegel und Kokegel werden bereits einige (Co)limites beschrieben. Beispiele wären die leere Menge, die Einpunktmenge, der Schnitt, die Vereinigung, das Produkt von Mengen, der Kern einer Gruppe, der Quotient von topologischen Räumen, die direkte Summe zweier Vektorräume, das freie Produkt von Gruppen oder der Pullback über ein Faserbündel. Jedes ist ein Spezialfall, welches eine Art universellen Kegel über einen bestimmten Funktor bildet.
 
+\subsection{Die Kategorie $\textbf{Vect}_{\mathbb{K}}$ der $\mathbb{K}$-Vektorräume}
 Wir betrachten nun ein typisches Beispiel für natürliche Transformtionen, für das wir Beweisen wollen, dass es sich wirklich um eine natürliche Transformation handelt. Sei $V$ dafür ein endlich dimensionaler Vektorraum über einem Körper $\mathbb{K}$, dann ist dieser isomorph zum Dualraum $V^*$ sowie isomorph zum Doppeldualraum $V^{**}$. Beide sind Vektorräume über $\mathbb{K}$:
 \begin{align}
 	V^* = \{ \text{lineare Abbildungen} \ V \rightarrow \mathbb{K} \}, \\
@@ -154,15 +157,13 @@ Im ersten Fall gilt, falls $\{v_1, \ldots, v_n\}$ eine Basis von $V$ ist, dass a
 \end{equation}
 Wie bereits aus der linearen Algebra bekannt ist, handelt es sich bei $V \rightarrow V^*$ nicht um einen kanonischen Isomorphismus. Unterschiedliche Basen erzeugen unterschiedliche Isomorphismen. Man kann sogar keinen Isomorphismus angeben, ohne sich vorher auf eine Basis festzulegen. Andererseits gibt es einen Isomorphismus von $V \rightarrow V^{**}$, der keine Wahl einer Basis benötigt: für jeden Vektor $v \in V$ und ein Element $f: V \rightarrow \mathbb{K}$, also $f \in V^*$, sei $\text{eval}_v(f) := f(v)$ die Evaluationsabbildung. Diese Abbildung wird in der Literatur häufig als \textbf{natürlicher Isomorphismus} bezeichnet. Was lässt sich für solche Isomorphismen also Schlussfolgern?
 
-\begin{lem}
+\begin{prop}
 Die Gesamtheit aller Evaluationsabbildungen ist eine natürliche Transformation zwischen zwei Funktoren.
-\end{lem}
+\end{prop}
 
 \begin{proof}
 Um das zu sehen, sei $(-)^{**}: \textbf{Vect}_{\mathbb{K}} \rightarrow \textbf{Vect}_{\mathbb{K}}$ der doppelte Dualfunktor, der jeden Vektorraum $V$ auf seinen Doppeldualraum $V^{**}$ abbildet und die linearen Abbildungen $\phi: V \rightarrow W$ auf $\phi^{**}: V^{**} \rightarrow W^{**}$.
 \end{proof}
-
-
 
 \section{Äquivalenzen von Kategorien}
 Äquivalente Kategorien sind identisch, bis auf die Tatsache, dass sie eine unterschiedliche Anzahl isomorpher Kopien eines Objekts enthalten können. Diese Aussage wollen wir in diesem Abschnitt präzisieren, indem wir definieren wann zwei Kategorien als äquivalent gelten. Seien dazu $\mathcal{A}, \mathcal{B}$ Kategorien. Man könnte die Äquivalenz von Kategorien wie folgt definieren:
@@ -182,8 +183,28 @@ Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt
 \end{defn}
 
 \begin{defn}[Äquivalenz von Kategorien]
-
+Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt \textbf{Äquivalenz von Kategorien}, falls er volltreu ist und surjektiv auf Isomorphieklassen, wenn es also für jedes $Y \in \mathcal{B}$ ein $X \in \mathcal{A}$ gibt mit $F(X) \cong Y$. Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ heißen \textbf{äquivalent}, wenn es eine Äquivalenz $F: \mathcal{A} \rightarrow \mathcal{B}$ gibt.
 \end{defn}
+
+\begin{exmp}
+Sei $\mathcal{A}$ die Kategorie mit nur einem Objekt $X$ und nur einem Morphismus $\text{Id}_X: X \rightarrow X$. Sei $\mathcal{B}$ die Kategorie mit genau zwei Objekten $\widetilde{X}, \widetilde{Y}$ und den Morphismen $\text{Id}_{\widetilde{X}}:\widetilde{X} \rightarrow \widetilde{X}, \text{Id}_{\widetilde{Y}}: \widetilde{Y} \rightarrow \widetilde{Y}, a: \widetilde{X} \rightarrow \widetilde{Y}$ und $b: \widetilde{Y} \rightarrow \widetilde{X}$ mit den Verkettungen $a \circ b = \text{Id}_{\widetilde{Y}}$ und $b \circ a = \text{Id}_{\widetilde{X}}$. 
+\begin{conj}
+Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ sind äquivalent.
+\end{conj}
+\begin{proof}
+Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ ein Funktor, sodass $F(\text{Id}_X) = \text{Id}_{\widetilde{X}}$.
+\begin{enumerate}
+	\item Dann ist die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(F(X),F(X))$ injektiv, denn $\text{Id}_{\widetilde{X}} = b \circ a$. Also ist der Funktor $F$ treu.
+	\item Es gilt außerdem dass die von $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X})$ surjektiv ist, denn
+	\begin{equation}
+		\text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X}) := \{\text{Id}_{\widetilde{X}}\},
+	\end{equation}
+	ist eine einelementige Menge. Also ist $F$ volltreu.
+	\item Es bleibt zu zeigen, dass für jedes $\widetilde{X} \in \mathcal{B}$ ein $X \in \mathcal{A}$ existiert, sodass $F(X) \cong \widetilde{X}$. Sei also $F(X) = \widetilde{X}$, so gilt $F(X) \cong \widetilde{X}$ trivialerweise. Aber da $b \circ a = \text{Id}_{\widetilde{X}}$ und $a \circ b = \text{Id}_{\widetilde{Y}}$, ist $\widetilde{X} \cong \widetilde{Y}$. Weil Isomorphie eine Äquivalenzrelation auf Klassen definiert, gilt auch $F(X) \cong \widetilde{Y}$.
+\end{enumerate}
+Damit ist gezeigt, dass $\mathcal{A}$ und $\mathcal{B}$ äquivalent sind.
+\end{proof}
+\end{exmp}
 
 \section{Darstellbare Funktoren}
 
@@ -191,4 +212,13 @@ Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt
 
 \section{Yoneda Lemma}
 
+
+\begin{thebibliography}{9}
+\bibitem{texbook}
+Donald E. Knuth (1986) \emph{The \TeX{} Book}, Addison-Wesley Professional.
+
+\bibitem{lamport94}
+Leslie Lamport (1994) \emph{\LaTeX: a document preparation system}, Addison
+Wesley, Massachusetts, 2nd ed.
+\end{thebibliography}
 \end{document}
