@@ -168,53 +168,101 @@ Die Gesamtheit aller Evaluationsabbildungen ist eine natürliche Transformation 
 Um das zu sehen, sei $(-)^{**}: \textbf{Vect}_{\mathbb{K}} \rightarrow \textbf{Vect}_{\mathbb{K}}$ der doppelte Dualfunktor, der jeden Vektorraum $V$ auf seinen Doppeldualraum $V^{**}$ abbildet und die linearen Abbildungen $\phi: V \rightarrow W$ auf $\phi^{**}: V^{**} \rightarrow W^{**}$.
 \end{proof}
 
+Tbd.
+
 \section{Äquivalenzen von Kategorien}
-Äquivalente Kategorien sind identisch, bis auf die Tatsache, dass sie eine unterschiedliche Anzahl isomorpher Kopien eines Objekts enthalten können. Diese Aussage wollen wir in diesem Abschnitt präzisieren, indem wir definieren wann zwei Kategorien als äquivalent gelten. Seien dazu $\mathcal{A}, \mathcal{B}$ Kategorien. Man könnte die Äquivalenz von Kategorien wie folgt definieren:
+Äquivalente Kategorien sind identisch, mit Ausnahme der Tatsache, dass sie eine unterschiedliche Anzahl von isomorphen Kopien eines Objekts enthalten können. Wir werden diese Aussage in diesem Abschnitt präzisieren, indem wir definieren, wann zwei Kategorien als äquivalent gelten. Zu diesem Zweck seien $\mathcal{A}, \mathcal{B}$ Kategorien. Man könnte die Äquivalenz von Kategorien wie folgt definieren:
 
 \begin{defn}[Äquivalente Kategorien]
-Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ heißen \textbf{äquivalent}, falls es Funktoren $F: \mathcal{A} \rightarrow \mathcal{B}$ und $G: \mathcal{B} \rightarrow \mathcal{A}$ gibt, so dass der Funktor $F \circ G$ äquivalent ist zu $\text{Id}_{\mathcal{B}}$ und der Funktor $G \circ F$ äquivalent ist zu $\text{Id}_\mathcal{A}$.
+Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ heißen \textbf{äquivalent}, wenn es Funktoren $F: \mathcal{A} \rightarrow \mathcal{B}$ und $G: \mathcal{B} \rightarrow \mathcal{A}$ gibt, so dass der Funktor $F \circ G$ äquivalent ist zu $\text{Id}_{\mathcal{B}}$ und der Funktor $G \circ F$ äquivalent ist zu $\text{Id}_\mathcal{A}$.
 \end{defn}
 
-Diese Definition ist jedoch nicht besonders nützlich. Es ist nicht praktikabel etwas wie eine Inverse von Funktoren zu definieren, da das Auffinden einer solchen Inverse sich meist als äußerst schwierig herausstellt. Die folgende Definition schafft daher Abhilfe:
+Diese Definition ist jedoch nicht besonders nützlich. Es ist nicht sinnvoll, so etwas wie eine Inverse von Funktoren zu definieren, da sich die Suche nach einer solchen Inversen in der Regel als äußerst schwierig erweist. Die folgende Definition schafft daher Abhilfe:
 
 \begin{defn}[Treue und volltreue Funktoren]
-Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt
+Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ wird als
 \begin{enumerate}
-	\item \textbf{treu}, falls für alle Objekte $X,Y \in \mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ injektiv ist.
-	\item \textbf{volltreu}, falls für alle Objekte $X$ und $Y$ in $\mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ eine Bijektion ist.
+	\item \textbf{treu} bezeichnet, wenn für alle Objekte $X,Y \in \mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ injektiv ist.
+	\item \textbf{volltreu} bezeichnet, wenn für alle Objekte $X$ und $Y$ in $\mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ eine Bijektion ist.
 \end{enumerate}
 \end{defn}
 
 \begin{defn}[Äquivalenz von Kategorien]
-Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt \textbf{Äquivalenz von Kategorien}, falls er volltreu ist und surjektiv auf Isomorphieklassen, wenn es also für jedes $Y \in \mathcal{B}$ ein $X \in \mathcal{A}$ gibt mit $F(X) \cong Y$. Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ heißen \textbf{äquivalent}, wenn es eine Äquivalenz $F: \mathcal{A} \rightarrow \mathcal{B}$ gibt.
+Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt \textbf{Äquivalenz von Kategorien}, wenn er volltreu und surjektiv auf Isomorphieklassen ist, also wenn es für jedes $Y \in \mathcal{B}$ ein $X \in \mathcal{A}$ mit $F(X) \cong Y$ gibt. Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ heißen \textbf{äquivalent}, wenn eine Äquivalenz $F: \mathcal{A} \rightarrow \mathcal{B}$ existiert.
 \end{defn}
 
 \begin{exmp}
-Sei $\mathcal{A}$ die Kategorie mit nur einem Objekt $X$ und nur einem Morphismus $\text{Id}_X: X \rightarrow X$. Sei $\mathcal{B}$ die Kategorie mit genau zwei Objekten $\widetilde{X}, \widetilde{Y}$ und den Morphismen $\text{Id}_{\widetilde{X}}:\widetilde{X} \rightarrow \widetilde{X}, \text{Id}_{\widetilde{Y}}: \widetilde{Y} \rightarrow \widetilde{Y}, a: \widetilde{X} \rightarrow \widetilde{Y}$ und $b: \widetilde{Y} \rightarrow \widetilde{X}$ mit den Verkettungen $a \circ b = \text{Id}_{\widetilde{Y}}$ und $b \circ a = \text{Id}_{\widetilde{X}}$. 
+Sei $\mathcal{A}$ die Kategorie mit nur einem Objekt $X$ und nur einem Morphismus $\text{Id}_X: X \rightarrow X$. Sei $\mathcal{B}$ die Kategorie mit genau zwei Objekten $\widetilde{X}, \widetilde{Y}$ und den Morphismen $\text{Id}_{\widetilde{X}}:\widetilde{X} \rightarrow \widetilde{X}, \text{Id}_{\widetilde{Y}}: \widetilde{Y} \rightarrow \widetilde{Y}, a: \widetilde{X} \rightarrow \widetilde{Y}$, und $b: \widetilde{Y} \rightarrow \widetilde{X}$ mit Verkettungen $a \circ b = \text{Id}_{\widetilde{Y}}$ und $b \circ a = \text{Id}_{\widetilde{X}}$. 
 \begin{conj}
 Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ sind äquivalent.
 \end{conj}
 \begin{proof}
-Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ ein Funktor, sodass $F(\text{Id}_X) = \text{Id}_{\widetilde{X}}$.
+Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ sei ein solcher Funktor, dass $F(\text{Id}_X) = \text{Id}_{\widetilde{X}}$.
 \begin{enumerate}
-	\item Dann ist die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(F(X),F(X))$ injektiv, denn $\text{Id}_{\widetilde{X}} = b \circ a$. Also ist der Funktor $F$ treu.
-	\item Es gilt außerdem dass die von $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X})$ surjektiv ist, denn
+	\item Dann ist die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(F(X),F(X))$ injektiv, weil $\text{Id}_{\widetilde{X}} = b \circ a$. Der Funktor $F$ ist also treu.
+	\item Es gilt auch, dass die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X})$ surjektiv ist, denn
 	\begin{equation}
 		\text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X}) := \{\text{Id}_{\widetilde{X}}\},
 	\end{equation}
-	ist eine einelementige Menge. Also ist $F$ volltreu.
-	\item Es bleibt zu zeigen, dass für jedes $\widetilde{X} \in \mathcal{B}$ ein $X \in \mathcal{A}$ existiert, sodass $F(X) \cong \widetilde{X}$. Sei also $F(X) = \widetilde{X}$, so gilt $F(X) \cong \widetilde{X}$ trivialerweise. Aber da $b \circ a = \text{Id}_{\widetilde{X}}$ und $a \circ b = \text{Id}_{\widetilde{Y}}$, ist $\widetilde{X} \cong \widetilde{Y}$. Weil Isomorphie eine Äquivalenzrelation auf Klassen definiert, gilt auch $F(X) \cong \widetilde{Y}$.
+	ist eine Ein-Element-Menge. Also ist $F$ volltreu.
+	\item Es bleibt zu zeigen, dass für jedes $\widetilde{X} \in \mathcal{B}$ ein $X \in \mathcal{A}$ existiert, so dass $F(X) \cong \widetilde{X}$. Also sei $F(X) = \widetilde{X}$, dann gilt $F(X) \cong \widetilde{X}$ trivial. Da aber $b \circ a = \text{Id}_{\widetilde{X}}$ und $a \circ b = \text{Id}_{\widetilde{Y}}$, gilt auch $\widetilde{X} \cong \widetilde{Y}$. Aufgrund der Tatsache, dass Isomorphie eine Äquivalenzrelation auf Klassen definiert, gilt auch $F(X) \cong \widetilde{Y}$.
 \end{enumerate}
-Damit ist gezeigt, dass $\mathcal{A}$ und $\mathcal{B}$ äquivalent sind.
+Dies zeigt, dass $\mathcal{A}$ und $\mathcal{B}$ äquivalent sind.
 \end{proof}
 \end{exmp}
 
 \section{Darstellbare Funktoren}
+Sei $\mathcal{A}$ eine Kategorie und $F: \mathcal{A} \rightarrow \textbf{Set}$ ein Funktor.
 
-\paragraph{Beispiele}
+\begin{defn}[Darstellbare Funktoren]
+Der Funktor $F$ heißt \textbf{darstellbar}, wenn es ein Objekt $X$ in $\mathcal{A}$ gibt und einen Isomorphismus $F \cong \text{Mor}_{\mathcal{A}}(X,\cdot)$ von Funktoren.
+\end{defn}
+
+Anders ausgedrückt soll der Funktor $F: X \mapsto \text{Mor}_\mathcal{A}(X,M)$ abbilden, also $F(X) = \text{Mor}_\mathcal{A}(X,M)$ in $\textbf{Set}$. Man beachte, dass der Funktor $F$ kontravariant ist. Man betrachte dafür nur den Morphismus $f: X \rightarrow Y$, dann ist der induzierte Morphismus $F(f): F(X) \rightarrow F(Y)$ gegeben durch $\text{Mor}_{\mathcal{A}}(Y,M) \rightarrow \text{Mor}_{\mathcal{A}}(X,M)$. Die Fragen, die wir mit der Darstellbarkeit klären wollen, lassen sich also explizit wie folgt formulieren:
+
+\begin{itemize}
+	\item Sei eine Kategorie $\mathcal{A}$ gegeben. Was ist dann $F$?
+	\item Sei ein Funktor $F: \mathcal{A} \rightarrow \text{Sets}$ gegeben, ist dann $F \cong \text{Mor}_{\mathcal{A}}(X,M)$ für ein $X \in \mathcal{A}$?
+\end{itemize}
+
+Sei $f: X \rightarrow Y$ ein Morphismus. Für jedes $M$ erhalten wir auf diese Weise eine Abbildung
+\begin{align}
+(\cdot \circ f)^M: \text{Mor}_{\mathcal{A}}(Y,M) &\rightarrow \text{Mor}_{\mathcal{A}}(X,M), \\
+g &\mapsto g \circ f.
+\end{align}
+
+Das liefert uns eine natürliche Transformation $(\cdot \circ f): \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$.
+
+\begin{exmp}
+	\begin{enumerate}
+		\item Sei $F: \textbf{B}G \rightarrow \textbf{Set}$ ein Funktor von der Kategorie der Gruppen in die Kategorie der Mengen. Damit wird eine Gruppe auf eine Menge abgebildet und der Gruppenhomomorphismus auf die zu Grunde liegende Funktion. Wir betrachten ein Element $g \in G$, dann gibt es einen eindeutigen Homomorphismus $\phi_g: \mathbb{Z} \rightarrow G$, so dass $1 \mapsto g$. Andererseits wird $1$ immer auf ein Element von $G$ abgebildet, also handelt es sich hierbei um eine Bijektion zwischen der Menge an Elementen in $G$ und der Menge an Homomorphismen von $\mathbb{Z}$ nach $G$. Diese Bijektion $\tau_G: F(G) \rightarrow \text{Mor}_{\textbf{B}G}(\mathbb{Z},G)$ sind also die Komponenten des natürlichen Isomorphismus. Es bleibt zu zeigen, dass für jeden Gruppenhomomorphismus $\varphi: G \rightarrow H$ für Gruppen $G,H$ die Gleichung
+		\begin{equation}
+		\tau_H \circ F(\varphi) = \text{Mor}_{\textbf{B}G}(\mathbb{Z},\varphi) \circ \tau_G
+		\end{equation}
+		erfüllt ist. Wir zeichnen zunächst ein kommutierendes Diagramm:
+		\begin{equation}
+			\begin{tikzcd}
+			F(G) \arrow[rr, "F(\varphi)"] \arrow[d, "\tau_G"]                                                     &  & F(H) \arrow[d, "\tau_H"]                 \\
+			{\text{Mor}_{\textbf{B}G}(\mathbb{Z},G)} \arrow[rr, "{\text{Mor}_{\textbf{B}G}(\mathbb{Z},\varphi)}"] &  & {\text{Mor}_{\textbf{B}G}(\mathbb{Z},H)}.
+			\end{tikzcd}
+		\end{equation}
+		Da $F(\varphi)$ lediglich ein Gruppenhomomorphismus ist, sendet die linke Seite der Gleichung ein Element $g \in G$ durch den eindeutigen Homomorphismus $\phi_{\varphi(g)}: \mathbb{Z} \rightarrow H$, so dass $\phi_{\varphi(g)}(1)=\varphi(g)$. Auf der rechten Seite bilden wir zunächst $g$ auf den Homomorphismus $\phi_g:\mathbb{Z} \rightarrow G$ ab und verknüpfen diesen dann mit $\varphi$. Dies erfüllt ebenfalls die Gleichung $\varphi(\phi_g(1)) = \varphi(g)$ und damit $\varphi \circ \phi_g = \phi_{\varphi(g)}$. Also wird $F$ durch $\mathbb{Z}$ repräsentiert.
+		\item Tbd.
+	\end{enumerate}
+\end{exmp}
+
+
 
 \section{Yoneda Lemma}
 
+
+\begin{lem}[Das Yoneda-Lemma]
+Seien $X$ und $Y$ Objekte einer Kategorie $\mathcal{A}$ und $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von Funktoren von $\mathcal{A}$ nach $\textbf{Set}$. Dann gibt es genau einen Isomorphismus $f: X \rightarrow Y$ mit $\tau = (\cdot \circ f)$. Insbesondere ist das Objekt $X$ durch den Funktor $\text{Mor}_{\mathcal{A}}(X,\cdot)$ bestimmt bis auf eindeutige Isomorphie.
+\end{lem}
+
+\begin{proof}
+
+\end{proof}
 
 \begin{thebibliography}{9}
 \bibitem{A} Peter Fiebig (2020) \emph{Einführung in die Darstellungstheorie. Vorlesungsskript}, Friedrich-Alexander Universität Erlangen-Nürnberg, Erlangen.
