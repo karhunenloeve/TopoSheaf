@@ -35,7 +35,7 @@
 \maketitle
 
 \begin{abstract}
-In diesem Skript behandeln wir die Definition von natürlichen Transformationen. Wir veranschaulichen natürliche Transformationen durch möglichst viele Beispiele, insbesondere solche, die für die Topologie von besonderem Interesse sind. Dann befassen wir uns mit der Frage, wann Kategorien als äquivalent angesehen werden können. Schließlich klären wir den Begriff der Darstellbarkeit für kovariante und kontravariante Funktoren.
+In diesem Vortrag behandeln wir die Definition von natürlichen Transformationen. Wir veranschaulichen natürliche Transformationen durch möglichst viele Beispiele, insbesondere solche, die für die Topologie von besonderem Interesse sind. Dann befassen wir uns mit der Frage, wann Kategorien als äquivalent angesehen werden können. Schließlich klären wir den Begriff der Darstellbarkeit für kovariante und kontravariante Funktoren.
 
 Mit Hilfe dieser Begriffe wird es uns gelingen, das Lemma von Yoneda zu beweisen, das oft als das wichtigste mathematische Ergebnis innerhalb der Kategorientheorie angesehen wird. Es beschreibt die Menge der natürlichen Transformationen zwischen einem $\textbf{Hom}$-Funktor und einem beliebigen anderen Funktor.
 \end{abstract}
@@ -79,7 +79,7 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 
 \begin{exmp}
 \begin{enumerate}
-	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X$ in $\mathcal{A}$ auf ein einziges Objekt $F(X)$ in $\mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{F(Y)}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $F(Y)$ und $\text{Id}_{F(Y)}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: F(X) \Longrightarrow F(Y)$.
+	\item Die Funktoren $F,G: \mathcal{A} \rightarrow \mathcal{B}$ seien beide konstante Funktoren, also wird jedes Objekt $X$ in $\mathcal{A}$ auf ein einziges Objekt $F(X)$ in $\mathcal{B}$ abgebildet und jeder Morphismus auf $\text{Id}_{F(X)}$ in $\mathcal{B}$. Analog soll $G$ ein Objekt und einen Morphismus auf ein festes $F(Y)$ und $\text{Id}_{F(Y)}$ in $\mathcal{B}$ abbilden. Dann ist eine natürliche Transformation von $F$ nach $G$ gegeben durch $\tau: F(X) \Longrightarrow F(Y)$.
 	\item Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ konstant für ein Objekt $X$ in $\mathcal{A}$ und $G: \mathcal{A} \rightarrow \mathcal{B}$ ein beliebiger Funktor. Dann besteht die natürliche Transformation $\tau: F \Longrightarrow G$ aus Abbildungen $\tau_{X}: F(X) \rightarrow G(X)$, eine für jedes $X \in \mathcal{A}$, sodass $\tau_Y = G(f) \circ \tau_X$, falls $f:X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulichen kann man das durch folgendes kommutierende Diagram, 
 	\begin{equation}
 		\begin{tikzcd}
@@ -89,7 +89,7 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 		G(X) \arrow[r, "G(f)"] & G(Y)                                                                                                                                                                        &                
 		\end{tikzcd},
 	\end{equation}
-	wobei $X,Y,V,W \in \mathcal{A}$ sind und die Knoten und Kanten des unteren Vierecks das durch $G$ gegebene Diagramm meint. Die Gleichung $\tau_Y = G(f) \circ \tau_X$, die erfüllt werden muss, bringt jeweils die Dreiecke im Tetraeder zum kommutieren. In diesem Fall heißt $\tau$ \textbf{Kegel über $G$}.
+	wobei $X,Y,V,W \in \mathcal{A}$ sind und die Knoten und Kanten des unteren Vierecks das durch $G$ gegebene Diagramm meint. Die Gleichung $\tau_Y = G(f) \circ \tau_X$, die erfüllt werden muss, bringt jeweils die Seiten im Tetraeder zum kommutieren. In diesem Fall heißt $\tau$ \textbf{Kegel über $G$}.
 	\item Sei andererseits $G$ konstant bei $X \in \mathcal{A}$, dann besteht eine natürliche Transformation aus einer Familie von Abbildungen $\tau_X: F(X) \rightarrow G(Y)$, sodass $\tau_Y \circ F(f) = \tau_X$ gilt, genau dann wenn $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$ ist. Veranschaulicht durch ein kommutierendes Diagramm,
 	\begin{equation}
 		\begin{tikzcd}
@@ -99,10 +99,10 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 		                                                         & G(X)                                                                                 &                                                   
 		\end{tikzcd}
 	\end{equation}
-	müssen die Seiten des Diagramms kommutieren. Dieses Diagramm heißt \textbf{Kegel unter $F$}, oder manchmal auch \textbf{Kokegel}.
+	müssen die Seiten des Diagramms kommutieren. Dieses Diagramm heißt \textbf{Kegel unter $F$}, oder manchmal auch \textbf{Kokegel von $F$} (eng. co-cone).
 	\item Seien $F,G: \mathcal{A} \rightarrow \mathcal{B}$ Funktoren und $f: X \rightarrow Y$ ein Morphismus in $\mathcal{A}$. Falls jede Kompontente $\tau_X: F(X) \rightarrow G(X)$ von $\tau$ ein Isomorphismus ist, dann ist die Bedingung $\tau_Y \circ F(f) = G(f) \circ \tau_X$ äquivalent zu $F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X$, da $\tau_Y$ invertierbar ist. In einer Kategorie ist der Isomorphismusbegriff so definiert, dass für einen Morphismus $f:X \rightarrow Y$ und $g:Y \rightarrow X$ gilt $g \circ f = \text{Id}_X$ und $f \circ g = \text{Id}_Y$, genau dann wenn $X$ und $Y$ isomorph sind. In einem kommutierenden Diagramm lässt sich das wie folgt darstellen:
 	\begin{equation}
-				\tau_Y \circ F(f) = G(f) \circ \tau_X, \hspace{1.5cm} F(f) = \tau_y^{-1} \circ G(f) \circ \tau_X,
+				\tau_Y \circ F(f) = G(f) \circ \tau_X, \hspace{1.5cm} F(f) = \tau_Y^{-1} \circ G(f) \circ \tau_X,
 	\end{equation}
 	\vspace{-0,5cm}
 	\begin{equation}
@@ -115,24 +115,26 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 \end{enumerate}
 \end{exmp}
 
-\subsection{Die Kategorie $\textbf{B}G$ der Gruppen}
+Ohne Zweifel ist man bereits über den Begriff des (Co)limes in der Kategorientheorie gestoßen. In den obigen Beispielen der Kegel und Kokegel werden bereits einige (Co)limites beschrieben. Beispiele wären die leere Menge, die Einpunktmenge, der Schnitt, die Vereinigung, das Produkt von Mengen, der Kern einer Gruppe, der Quotient von topologischen Räumen, die direkte Summe zweier Vektorräume, das freie Produkt von Gruppen oder der Pullback über ein Faserbündel. Jedes ist ein Spezialfall, welches eine Art universellen Kegel über einen bestimmten Funktor bildet.
+
+\subsection{Die Kategorie $\textbf{Grp}$ der Gruppen}
 Wir betrachten eine Gruppe $G$.
 
 \begin{prop}
-Dann ist $\textbf{B}G$ mit einem Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ eine Kategorie.
+Dann ist $\textbf{Grp}$ mit einem einzigen Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ zusammen mit der Verknüpfung $\circ: G \times G \rightarrow G$ eine Kategorie. Die Verknüpfung der Gruppe ist auch die Verknüpfung innerhalb von $\textbf{Grp}$.
 \end{prop}
 
-\begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, welche kompatibel zueinander sind, dass auch $g \circ h : G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Kompatibilität meint, dass das Bild von $h$ gleich dem Urbild von $g$ ist, $\text{Im}(h) = g^{-1}$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da Gruppenoperationen bereits assoziativ sind.
+\begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, nämlich das Gruppenelement $gh \in G$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da die Verknüpfung der Gruppe bereits assoziativ ist.
 \end{proof}
 
-Nun können wir einen Funktor $F: \textbf{B}G \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{B}G$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet.
+Nun können wir einen Funktor $F: \textbf{Grp} \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{Grp}$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet.
 
 \begin{prop}
 Die Funktorialität determiniert für jeden Funktor eine linke Gruppenoperation und das Bild eines einzelnen Objekts unter diesem Funktor ist eine $G$-Menge.
 \end{prop}
 
 \begin{proof}
-Seien $C,D: \textbf{B}G \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ und $D(G) = N$ für $M,N \in \textbf{Set}$ und sei $g: G \rightarrow G$ ein Element der Gruppe. Dann ist $\tau: C \Longrightarrow D$ eine natürliche Transformation, bestehend aus genau einer Funktion $\tau: M \rightarrow N$, sodass $\tau(g(m)) = g(\tau(m))$, für jedes $m \in M$.
+Seien $C,D: \textbf{Grp} \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ und $D(G) = N$ für $M,N \in \textbf{Set}$ und sei $g: G \rightarrow G$ ein Element der Gruppe. Dann ist $\tau: C \Longrightarrow D$ eine natürliche Transformation, bestehend aus genau einer Funktion $\tau: M \rightarrow N$, sodass $\tau(g(m)) = g(\tau(m))$, für jedes $m \in M$.
 \end{proof}
 
 Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}. Diese Gleichung lässt sich mit dem nachfolgenden kommutierenden Diagramm noch einmal veranschaulichen.
@@ -143,35 +145,10 @@ Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}. D
 		\end{tikzcd}
 	\end{equation}
 
-Ohne Zweifel ist man bereits über den Begriff des (Co)limes in der Kategorientheorie gestoßen. In den obigen Beispielen der Kegel und Kokegel werden bereits einige (Co)limites beschrieben. Beispiele wären die leere Menge, die Einpunktmenge, der Schnitt, die Vereinigung, das Produkt von Mengen, der Kern einer Gruppe, der Quotient von topologischen Räumen, die direkte Summe zweier Vektorräume, das freie Produkt von Gruppen oder der Pullback über ein Faserbündel. Jedes ist ein Spezialfall, welches eine Art universellen Kegel über einen bestimmten Funktor bildet.
-
-\subsection{Die Kategorie $\textbf{Vect}_{\mathbb{K}}$ der $\mathbb{K}$-Vektorräume}
-Wir betrachten nun ein typisches Beispiel für natürliche Transformtionen, für das wir Beweisen wollen, dass es sich wirklich um eine natürliche Transformation handelt. Sei $V$ dafür ein endlich dimensionaler Vektorraum über einem Körper $\mathbb{K}$, dann ist dieser isomorph zum Dualraum $V^*$ sowie isomorph zum Doppeldualraum $V^{**}$. Beide sind Vektorräume über $\mathbb{K}$:
-\begin{align}
-	V^* = \{ \text{lineare Abbildungen} \ V \rightarrow \mathbb{K} \}, \\
-	V^{**} = \{ \text{lineare Abbildungen} \ V^* \rightarrow \mathbb{K} \}.
-\end{align}
-Im ersten Fall gilt, falls $\{v_1, \ldots, v_n\}$ eine Basis von $V$ ist, dass auch $\{v_1^*, \ldots, v_n^*\}$ eine Basis von $V^*$ ist, wobei für jedes $i \in \{1, \ldots, n\}$ die Abbildung $v_i^*: V \rightarrow \mathbb{K}$ gegeben ist durch
-\begin{equation}
-	v_i^*(v_j) = \begin{cases}
-	1, \quad \text{if} \ i = j, \\
-	0, \quad \text{if} \ i \neq j.
-	\end{cases}
-\end{equation}
-Wie bereits aus der linearen Algebra bekannt ist, handelt es sich bei $V \rightarrow V^*$ nicht um einen kanonischen Isomorphismus. Unterschiedliche Basen erzeugen unterschiedliche Isomorphismen. Man kann sogar keinen Isomorphismus angeben, ohne sich vorher auf eine Basis festzulegen. Andererseits gibt es einen Isomorphismus von $V \rightarrow V^{**}$, der keine Wahl einer Basis benötigt: für jeden Vektor $v \in V$ und ein Element $f: V \rightarrow \mathbb{K}$, also $f \in V^*$, sei $\text{eval}_v(f) := f(v)$ die Evaluationsabbildung. Diese Abbildung wird in der Literatur häufig als \textbf{natürlicher Isomorphismus} bezeichnet. Was lässt sich für solche Isomorphismen also Schlussfolgern?
-
-\begin{prop}
-Die Gesamtheit aller Evaluationsabbildungen ist eine natürliche Transformation zwischen zwei Funktoren.
-\end{prop}
-
-\begin{proof}
-Um das zu sehen, sei $(-)^{**}: \textbf{Vect}_{\mathbb{K}} \rightarrow \textbf{Vect}_{\mathbb{K}}$ der doppelte Dualfunktor, der jeden Vektorraum $V$ auf seinen Doppeldualraum $V^{**}$ abbildet und die linearen Abbildungen $\phi: V \rightarrow W$ auf $\phi^{**}: V^{**} \rightarrow W^{**}$.
-\end{proof}
-
-Tbd.
-
 \section{Äquivalenzen von Kategorien}
-Äquivalente Kategorien sind identisch, mit Ausnahme der Tatsache, dass sie eine unterschiedliche Anzahl von isomorphen Kopien eines Objekts enthalten können. Wir werden diese Aussage in diesem Abschnitt präzisieren, indem wir definieren, wann zwei Kategorien als äquivalent gelten. Zu diesem Zweck seien $\mathcal{A}, \mathcal{B}$ Kategorien. Man könnte die Äquivalenz von Kategorien wie folgt definieren:
+Äquivalente Kategorien sind identisch, mit Ausnahme der Tatsache, dass sie eine unterschiedliche Anzahl von isomorphen Kopien eines Objekts enthalten können. Wir werden diese Aussage in diesem Abschnitt präzisieren, indem wir definieren, wann zwei Kategorien als äquivalent gelten. Zu diesem Zweck seien $\mathcal{A}, \mathcal{B}$ Kategorien. 
+
+Man könnte die Äquivalenz von Kategorien wie folgt definieren:
 
 \begin{defn}[Äquivalente Kategorien]
 Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ heißen \textbf{äquivalent}, wenn es Funktoren $F: \mathcal{A} \rightarrow \mathcal{B}$ und $G: \mathcal{B} \rightarrow \mathcal{A}$ gibt, so dass der Funktor $F \circ G$ äquivalent ist zu $\text{Id}_{\mathcal{B}}$ und der Funktor $G \circ F$ äquivalent ist zu $\text{Id}_\mathcal{A}$.
@@ -182,7 +159,7 @@ Diese Definition ist jedoch nicht besonders nützlich. Es ist nicht sinnvoll, so
 \begin{defn}[Treue und volltreue Funktoren]
 Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ wird als
 \begin{enumerate}
-	\item \textbf{treu} bezeichnet, wenn für alle Objekte $X,Y \in \mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ injektiv ist.
+	\item \textbf{treu} bezeichnet, wenn für alle Objekte $X,Y \in \mathcal{A}$ die durch $F$ induzierte Abbildung von der Menge der Morphismen in $\mathcal{A}$ in die der Kategorie $\mathcal{B}$, $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$, injektiv ist.
 	\item \textbf{volltreu} bezeichnet, wenn für alle Objekte $X$ und $Y$ in $\mathcal{A}$ die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,Y) \rightarrow \text{Mor}_\mathcal{B}(F(X),F(Y))$ eine Bijektion ist.
 \end{enumerate}
 \end{defn}
@@ -192,42 +169,42 @@ Ein Funktor $F: \mathcal{A} \rightarrow \mathcal{B}$ heißt \textbf{Äquivalenz 
 \end{defn}
 
 \begin{exmp}
-Sei $\mathcal{A}$ die Kategorie mit nur einem Objekt $X$ und nur einem Morphismus $\text{Id}_X: X \rightarrow X$. Sei $\mathcal{B}$ die Kategorie mit genau zwei Objekten $\widetilde{X}, \widetilde{Y}$ und den Morphismen $\text{Id}_{\widetilde{X}}:\widetilde{X} \rightarrow \widetilde{X}, \text{Id}_{\widetilde{Y}}: \widetilde{Y} \rightarrow \widetilde{Y}, a: \widetilde{X} \rightarrow \widetilde{Y}$, und $b: \widetilde{Y} \rightarrow \widetilde{X}$ mit Verkettungen $a \circ b = \text{Id}_{\widetilde{Y}}$ und $b \circ a = \text{Id}_{\widetilde{X}}$. 
+Sei $\mathcal{A}$ die Kategorie mit nur einem Objekt $X$ und nur einem Morphismus $\text{Id}_X: X \rightarrow X$. Sei $\mathcal{B}$ die Kategorie mit genau zwei Objekten $\widetilde{X}, \widetilde{Y}$ und den Morphismen $\text{Id}_{\widetilde{X}}:\widetilde{X} \rightarrow \widetilde{X}, \text{Id}_{\widetilde{Y}}: \widetilde{Y} \rightarrow \widetilde{Y}, a: \widetilde{X} \rightarrow \widetilde{Y}$ und $b: \widetilde{Y} \rightarrow \widetilde{X}$ mit Verkettungen $a \circ b = \text{Id}_{\widetilde{Y}}$ und $b \circ a = \text{Id}_{\widetilde{X}}$. 
 \begin{conj}
 Die Kategorien $\mathcal{A}$ und $\mathcal{B}$ sind äquivalent.
 \end{conj}
 \begin{proof}
-Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ sei ein solcher Funktor, dass $F(\text{Id}_X) = \text{Id}_{\widetilde{X}}$.
+Sei $F: \mathcal{A} \rightarrow \mathcal{B}$ ein Funktor mit $X \mapsto \widetilde{X}$, so dass $F(\text{Id}_X) = \text{Id}_{\widetilde{X}}$.
 \begin{enumerate}
-	\item Dann ist die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(F(X),F(X))$ injektiv, weil $\text{Id}_{\widetilde{X}} = b \circ a$. Der Funktor $F$ ist also treu.
+	\item Dann ist die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(F(X),F(X))$ injektiv, denn $\text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X})$ ist eine Ein-Element-Menge. Der Funktor $F$ ist also treu.
 	\item Es gilt auch, dass die durch $F$ induzierte Abbildung $\text{Mor}_\mathcal{A}(X,X) \rightarrow \text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X})$ surjektiv ist, denn
 	\begin{equation}
 		\text{Mor}_{\mathcal{B}}(\widetilde{X},\widetilde{X}) := \{\text{Id}_{\widetilde{X}}\},
 	\end{equation}
 	ist eine Ein-Element-Menge. Also ist $F$ volltreu.
-	\item Es bleibt zu zeigen, dass für jedes $\widetilde{X} \in \mathcal{B}$ ein $X \in \mathcal{A}$ existiert, so dass $F(X) \cong \widetilde{X}$. Also sei $F(X) = \widetilde{X}$, dann gilt $F(X) \cong \widetilde{X}$ trivial. Da aber $b \circ a = \text{Id}_{\widetilde{X}}$ und $a \circ b = \text{Id}_{\widetilde{Y}}$, gilt auch $\widetilde{X} \cong \widetilde{Y}$. Aufgrund der Tatsache, dass Isomorphie eine Äquivalenzrelation auf Klassen definiert, gilt auch $F(X) \cong \widetilde{Y}$.
+	\item Es bleibt zu zeigen, dass für jedes $\widetilde{X} \in \mathcal{B}$ ein $X \in \mathcal{A}$ existiert, so dass $F(X) \cong \widetilde{X}$. Also sei $F(X) = \widetilde{X}$, dann gilt $F(X) \cong \widetilde{X}$ trivial. Da aber $a \circ b = \text{Id}_{\widetilde{Y}}$ und $b \circ a = \text{Id}_{\widetilde{X}}$, gilt auch $\widetilde{X} \cong \widetilde{Y}$. Aufgrund der Tatsache, dass Isomorphie eine Äquivalenzrelation auf Klassen definiert, gilt auch $F(X) \cong \widetilde{Y}$.
 \end{enumerate}
 Dies zeigt, dass $\mathcal{A}$ und $\mathcal{B}$ äquivalent sind.
 \end{proof}
 \end{exmp}
 
 \section{Darstellbare Funktoren}
-Sei $\mathcal{A}$ eine Kategorie und $F: \mathcal{A} \rightarrow \textbf{Set}$ ein Funktor.
+Sei $\mathcal{A}$ eine Kategorie und $F: \mathcal{A} \rightarrow \textbf{Set}$ ein vergesslicher Funktor.
 
 \begin{defn}[Darstellbare Funktoren]
 Der Funktor $F$ heißt \textbf{darstellbar}, wenn es ein Objekt $X$ in $\mathcal{A}$ gibt und einen Isomorphismus $F \cong \text{Mor}_{\mathcal{A}}(X,\cdot)$ von Funktoren.
 \end{defn}
 
-Anders ausgedrückt soll der Funktor $F: X \mapsto \text{Mor}_\mathcal{A}(X,M)$ abbilden, also $F(X) = \text{Mor}_\mathcal{A}(X,M)$ in $\textbf{Set}$. Man beachte, dass der Funktor $F$ kontravariant ist. Man betrachte dafür nur den Morphismus $f: X \rightarrow Y$, dann ist der induzierte Morphismus $F(f): F(X) \rightarrow F(Y)$ gegeben durch $\text{Mor}_{\mathcal{A}}(Y,M) \rightarrow \text{Mor}_{\mathcal{A}}(X,M)$. Die Fragen, die wir mit der Darstellbarkeit klären wollen, lassen sich also explizit wie folgt formulieren:
+Anders ausgedrückt soll der Funktor $F: \mathcal{A} \mapsto \text{Mor}_\mathcal{A}(X,\cdot)$ abbilden, also $F(M) = \text{Mor}_\mathcal{A}(X,M)$ in $\textbf{Set}$. Man beachte, dass der Funktor $F$ kovariant ist. Man betrachte dafür nur den Morphismus $f: X \rightarrow Y$, dann ist der induzierte Morphismus $F(f): F(X) \rightarrow F(Y)$ gegeben durch $\text{Mor}_{\mathcal{A}}(X,M) \rightarrow \text{Mor}_{\mathcal{A}}(Y,M)$. Die Fragen, die wir mit der Darstellbarkeit klären wollen, lassen sich also explizit wie folgt formulieren:
 
 \begin{itemize}
-	\item Sei eine Kategorie $\mathcal{A}$ gegeben. Was ist dann $F$?
-	\item Sei ein Funktor $F: \mathcal{A} \rightarrow \text{Sets}$ gegeben, ist dann $F \cong \text{Mor}_{\mathcal{A}}(X,M)$ für ein $X \in \mathcal{A}$?
+	\item Sei eine Kategorie $\mathcal{A}$ gegeben. Was ist dann $F$ und was ist $M$?
+	\item Sei ein Funktor $F: \mathcal{A} \rightarrow \text{Sets}$ gegeben, ist dann $F \cong \text{Mor}_{\mathcal{A}}(X,\cdot)$ für ein $X \in \mathcal{A}$?
 \end{itemize}
 
 Sei $f: X \rightarrow Y$ ein Morphismus. Für jedes $M$ erhalten wir auf diese Weise eine Abbildung
 \begin{align}
-(\cdot \circ f)^M: \text{Mor}_{\mathcal{A}}(Y,M) &\rightarrow \text{Mor}_{\mathcal{A}}(X,M), \\
+(\cdot \circ f)_M: \text{Mor}_{\mathcal{A}}(Y,M) &\rightarrow \text{Mor}_{\mathcal{A}}(X,M), \\
 g &\mapsto g \circ f.
 \end{align}
 
@@ -235,19 +212,19 @@ Das liefert uns eine natürliche Transformation $(\cdot \circ f): \text{Mor}_{\m
 
 \begin{exmp}
 	\begin{enumerate}
-		\item Sei $F: \textbf{B}G \rightarrow \textbf{Set}$ ein Funktor von der Kategorie der Gruppen in die Kategorie der Mengen. Damit wird eine Gruppe auf eine Menge abgebildet und der Gruppenhomomorphismus auf die zu Grunde liegende Funktion. Wir betrachten ein Element $g \in G$, dann gibt es einen eindeutigen Homomorphismus $\phi_g: \mathbb{Z} \rightarrow G$, so dass $1 \mapsto g$. Andererseits wird $1$ immer auf ein Element von $G$ abgebildet, also handelt es sich hierbei um eine Bijektion zwischen der Menge an Elementen in $G$ und der Menge an Homomorphismen von $\mathbb{Z}$ nach $G$. Diese Bijektion $\tau_G: F(G) \rightarrow \text{Mor}_{\textbf{B}G}(\mathbb{Z},G)$ sind also die Komponenten des natürlichen Isomorphismus. Es bleibt zu zeigen, dass für jeden Gruppenhomomorphismus $\varphi: G \rightarrow H$ für Gruppen $G,H$ die Gleichung
+		\item Sei $U: \textbf{Grp} \rightarrow \textbf{Set}$ ein Funktor von der Kategorie der Gruppen in die Kategorie der Mengen. Damit wird eine Gruppe auf eine Menge abgebildet und der Gruppenhomomorphismus auf die zu Grunde liegende Funktion.
+		Wir betrachten ein Element $g \in G$, dann gibt es einen eindeutigen Homomorphismus $\phi_g: \mathbb{Z} \rightarrow G$, so dass $1 \mapsto g$. Andererseits wird $1$ immer auf ein Element von $G$ abgebildet, also handelt es sich hierbei um eine Bijektion zwischen der Menge an Elementen in $G$ und der Menge an Homomorphismen von $\mathbb{Z}$ nach $G$. Diese Bijektion $\tau_G: U(G) \rightarrow \text{Mor}_{\textbf{Grp}}(\mathbb{Z},G)$ sind also die Komponenten des natürlichen Isomorphismus. Es bleibt zu zeigen, dass für jeden Gruppenhomomorphismus $\varphi: G \rightarrow H$ für Gruppen $G,H$ die Gleichung
 		\begin{equation}
-		\tau_H \circ F(\varphi) = \text{Mor}_{\textbf{B}G}(\mathbb{Z},\varphi) \circ \tau_G
+		\tau_H \circ U(\varphi) = \text{Mor}_{\textbf{Grp}}(\mathbb{Z},\varphi) \circ \tau_G
 		\end{equation}
 		erfüllt ist. Wir zeichnen zunächst ein kommutierendes Diagramm:
 		\begin{equation}
 			\begin{tikzcd}
-			F(G) \arrow[rr, "F(\varphi)"] \arrow[d, "\tau_G"]                                                     &  & F(H) \arrow[d, "\tau_H"]                 \\
-			{\text{Mor}_{\textbf{B}G}(\mathbb{Z},G)} \arrow[rr, "{\text{Mor}_{\textbf{B}G}(\mathbb{Z},\varphi)}"] &  & {\text{Mor}_{\textbf{B}G}(\mathbb{Z},H)}.
+			U(G) \arrow[rr, "U(\varphi)"] \arrow[d, "\tau_G"]                                                     &  & U(H) \arrow[d, "\tau_H"]                 \\
+			{\text{Mor}_{\textbf{Grp}}(\mathbb{Z},G)} \arrow[rr, "{\text{Mor}_{\textbf{Grp}}(\mathbb{Z},\varphi)}"] &  & {\text{Mor}_{\textbf{Grp}}(\mathbb{Z},H)}.
 			\end{tikzcd}
 		\end{equation}
-		Da $F(\varphi)$ lediglich ein Gruppenhomomorphismus ist, sendet die linke Seite der Gleichung ein Element $g \in G$ durch den eindeutigen Homomorphismus $\phi_{\varphi(g)}: \mathbb{Z} \rightarrow H$, so dass $\phi_{\varphi(g)}(1)=\varphi(g)$. Auf der rechten Seite bilden wir zunächst $g$ auf den Homomorphismus $\phi_g:\mathbb{Z} \rightarrow G$ ab und verknüpfen diesen dann mit $\varphi$. Dies erfüllt ebenfalls die Gleichung $\varphi(\phi_g(1)) = \varphi(g)$ und damit $\varphi \circ \phi_g = \phi_{\varphi(g)}$. Also wird $F$ durch $\mathbb{Z}$ repräsentiert.
-		\item Tbd.
+		Da $U(\varphi)$ lediglich die dem Gruppenhomomorphismus zu Grunde liegende Funktion ist, sendet die linke Seite der Gleichung ein Element $g \in G$ durch den eindeutigen Homomorphismus $\phi_{\varphi(g)}: \mathbb{Z} \rightarrow H$, so dass $\phi_{\varphi(g)}(1)=\varphi(g)$. Auf der rechten Seite bilden wir zunächst $g$ auf den Homomorphismus $\phi_g:\mathbb{Z} \rightarrow G$ ab und verknüpfen diesen dann mit $\varphi$. Dies erfüllt ebenfalls die Gleichung $\varphi(\phi_g(1)) = \varphi(g)$ und damit $\varphi \circ \phi_g = \phi_{\varphi(g)}$. Also wird $U$ durch $\mathbb{Z}$ repräsentiert.
 	\end{enumerate}
 \end{exmp}
 
@@ -261,7 +238,12 @@ Seien $X$ und $Y$ Objekte einer Kategorie $\mathcal{A}$ und $\tau: \text{Mor}_{\
 \end{lem}
 
 \begin{proof}
+Sei $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von Funktoren. Sei $f: X \rightarrow Y$ das Bild von $\text{Id}_Y$ und $M$ ein weiteres Objekt in der Kategorie $\mathcal{A}$ und $\phi \in \text{Mor}_\mathcal{A}(Y,M)$. Dann gibt es ein kommutatives Diagramm
 
+
+Wenn wir oben links mit der Identität starten, erhalten wir über den linken unteren Weg $\tau_M(\phi)$, über den oberen rechten Weg aber $\phi \circ f$. Also ist $\tau_M(\phi) = \phi \circ f$ für alle Daten $(M,\phi)$, also ist $\tau = (\cdot \circ f)$. Die Abbildung $f:X \rightarrow Y$ ist aber auch die einzige Abbildung, die diese Gleichung erfüllt. Das erkennt man, indem man $M = Y$ und $\phi = \text{Id}$ wählt.
+
+Zuletzt zeigen wir noch das $f$ ein Isomorphismus ist.
 \end{proof}
 
 \begin{thebibliography}{9}
