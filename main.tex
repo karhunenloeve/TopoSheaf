@@ -231,7 +231,7 @@ Das liefert uns eine natürliche Transformation $(\cdot \circ f): \text{Mor}_{\m
 
 
 \section{Yoneda Lemma}
-
+Möchte man mathematische Objekte besser verstehen, so postuliert das Yoneda-Lemma, ist es notwendig die Beziehung dieser Objekte zu allen anderen Objekten mit denselben mathematischen Eigenschaften zu verstehen. Ein Objekt wird also vollständig durch seine Beziehungen zu anderen Objekten bestimmt, d.h. dadurch, wie das Objekt aus der Sicht jedes Objekts in der Kategorie \emph{aussieht}. Im Folgenden präzisieren wir diese Aussage durch das Yoneda-Lemma:
 
 \begin{lem}[Das Yoneda-Lemma]
 Seien $X$ und $Y$ Objekte einer Kategorie $\mathcal{A}$ und $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von Funktoren von $\mathcal{A}$ nach $\textbf{Set}$. Dann gibt es genau einen Isomorphismus $f: X \rightarrow Y$ mit $\tau = (\cdot \circ f)$. Insbesondere ist das Objekt $X$ durch den Funktor $\text{Mor}_{\mathcal{A}}(X,\cdot)$ bestimmt bis auf eindeutige Isomorphie.
@@ -239,11 +239,24 @@ Seien $X$ und $Y$ Objekte einer Kategorie $\mathcal{A}$ und $\tau: \text{Mor}_{\
 
 \begin{proof}
 Sei $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von Funktoren. Sei $f: X \rightarrow Y$ das Bild von $\text{Id}_Y$ und $M$ ein weiteres Objekt in der Kategorie $\mathcal{A}$ und $\phi \in \text{Mor}_\mathcal{A}(Y,M)$. Dann gibt es ein kommutatives Diagramm
-
-
-Wenn wir oben links mit der Identität starten, erhalten wir über den linken unteren Weg $\tau_M(\phi)$, über den oberen rechten Weg aber $\phi \circ f$. Also ist $\tau_M(\phi) = \phi \circ f$ für alle Daten $(M,\phi)$, also ist $\tau = (\cdot \circ f)$. Die Abbildung $f:X \rightarrow Y$ ist aber auch die einzige Abbildung, die diese Gleichung erfüllt. Das erkennt man, indem man $M = Y$ und $\phi = \text{Id}$ wählt.
+\begin{equation}
+	\begin{tikzcd}
+	{\text{Mor}_{\mathcal{A}}(Y,Y)} \arrow[d, "\phi \circ"] \arrow[r, "\tau_Y"] & {\text{Mor}_{\mathcal{A}}(X,Y)} \arrow[d, "\phi \circ"] \\
+	{\text{Mor}_{\mathcal{A}}(Y,M)} \arrow[r, "\tau_M"]                         & {\text{Mor}_{\mathcal{A}}(X,M)}.                        
+	\end{tikzcd}
+\end{equation}
+Wenn wir oben links mit der Identität starten, erhalten wir über den linken unteren Weg $\tau_M(\phi)$, über den oberen rechten Weg aber $\phi \circ f$. Also ist $\tau_M(\phi) = \phi \circ f$ für alle Daten $(M,\phi)$, also ist $\tau = (\cdot \circ f)$. Die Abbildung $f:X \rightarrow Y$ ist aber auch die einzige Abbildung, die diese Gleichung erfüllt. Das erkennt man, indem man $M = Y$ und $\phi = \text{Id}$ wählt: $\tau_Y(\text{Id}) = \text{Id} \circ f = f$.
 
 Zuletzt zeigen wir noch das $f$ ein Isomorphismus ist.
+
+Analog zu obiger Konstruktion liefert $\tau^{-1}: \text{Mor}_{\mathcal{A}}(X,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(Y,\cdot)$ eine Abbildung $g := \tau^{-1}_X (\text{Id}_X): Y \rightarrow X$. Wir betrachten nun folgendes Diagramm, das nach Definition von natürlichen Transformationen kommutativ ist:
+\begin{equation}
+	\begin{tikzcd}
+	{\text{Mor}_{\mathcal{A}}(Y,Y)} \arrow[d, "g \circ"] \arrow[r, "\tau_Y"] & {\text{Mor}_{\mathcal{A}}(X,Y)} \arrow[d, "g \circ"] \\
+	{\text{Mor}_{\mathcal{A}}(Y,X)} \arrow[r, "\tau_X"]                      & {\text{Mor}_{\mathcal{A}}(X,X)}.                     
+	\end{tikzcd}
+\end{equation}
+Wenn wir oben links mit $\text{Id}_Y$ beginnen, so erhalten wir, wenn wir nach unten und dann nach rechts abbilden, die Identität auf $X$, nach Definition von $g$. Bilden wir die Identität aber nach rechts und dann nach unten ab, so erhlaten wir zuerst $f$ und dann $g \circ f$. Aus der Kommutativität folgt also $\text{Id}_X = g \circ f$. Analog erkennen wir, dass $\text{Id}_Y = f \circ g$. Die Abbildung $f:X \rightarrow Y$ ist also ein Isomorphismus.
 \end{proof}
 
 \begin{thebibliography}{9}
