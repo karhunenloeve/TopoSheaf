@@ -124,7 +124,7 @@ Wir betrachten eine Gruppe $G$.
 Dann ist $\textbf{Grp}$ mit einem einzigen Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ zusammen mit der Verknüpfung $\circ: G \times G \rightarrow G$ eine Kategorie. Die Verknüpfung der Gruppe ist auch die Verknüpfung innerhalb von $\textbf{Grp}$.
 \end{prop}
 
-\begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, nämlich das Gruppenelement $gh \in G$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da die Verknüpfung der Gruppe bereits assoziativ ist.
+\begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, dass auch $g \circ h: G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da die Verknüpfung der Gruppe bereits assoziativ ist.
 \end{proof}
 
 Nun können wir einen Funktor $F: \textbf{Grp} \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{Grp}$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet.
