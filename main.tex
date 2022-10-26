@@ -117,24 +117,24 @@ Um das obige Diagramm in Gänze verstehen zu können, betrachten wir im Anschlus
 
 Ohne Zweifel ist man bereits über den Begriff des (Co)limes in der Kategorientheorie gestoßen. In den obigen Beispielen der Kegel und Kokegel werden bereits einige (Co)limites beschrieben. Beispiele wären die leere Menge, die Einpunktmenge, der Schnitt, die Vereinigung, das Produkt von Mengen, der Kern einer Gruppe, der Quotient von topologischen Räumen, die direkte Summe zweier Vektorräume, das freie Produkt von Gruppen oder der Pullback über ein Faserbündel. Jedes ist ein Spezialfall, welches eine Art universellen Kegel über einen bestimmten Funktor bildet.
 
-\subsection{Die Kategorie $\textbf{Grp}$ der Gruppen}
+\subsection{Die Kategorie $B\textbf{G}$}
 Wir betrachten eine Gruppe $G$.
 
 \begin{prop}
-Dann ist $\textbf{Grp}$ mit einem einzigen Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ zusammen mit der Verknüpfung $\circ: G \times G \rightarrow G$ eine Kategorie. Die Verknüpfung der Gruppe ist auch die Verknüpfung innerhalb von $\textbf{Grp}$.
+Dann ist $B\textbf{G}$ mit einem einzigen Objekt $G$ und einem Morphismus $g: G \rightarrow G$ für jedes Element $g \in G$ zusammen mit der Verknüpfung $\circ: G \times G \rightarrow G$ eine Kategorie. Die Verknüpfung der Gruppe ist auch die Verknüpfung innerhalb von $B\textbf{G}$.
 \end{prop}
 
 \begin{proof} Da eine Gruppe abgeschlossen ist unter der Komposition, gilt für zwei Morphismen $g,h: G \rightarrow G$, dass auch $g \circ h: G \rightarrow G$ ein Morphismus ist, nämlich das Gruppenelement $gh \in G$. Die Identität $e \in G$ fungiert als Identitätsmorphismus für $G$ und die Assoziativität gilt aufgrund dessen, da die Verknüpfung der Gruppe bereits assoziativ ist.
 \end{proof}
 
-Nun können wir einen Funktor $F: \textbf{Grp} \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in \textbf{Grp}$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet.
+Nun können wir einen Funktor $F: B\textbf{G} \rightarrow \textbf{Set}$ in die Kategorie der Mengen definieren, der jedes Objekt $G \in B\textbf{G}$ auf genau eine Menge $M \in \textbf{Set}$ abbildet, und jedes Gruppenelement $g \in G$ auf eine Funktion $g \cdot - : M \rightarrow M, m \mapsto g \cdot m$ abbildet.
 
 \begin{prop}
-Die Funktorialität determiniert für jeden Funktor eine linke Gruppenoperation und das Bild eines einzelnen Objekts unter diesem Funktor ist eine $G$-Menge.
+Die Menge der Funktoren $\text{Fun}(B\textbf{G}, \textbf{Set})$ ist äquivalent zu $G-\textbf{Set}$.
 \end{prop}
 
 \begin{proof}
-Seien $C,D: \textbf{Grp} \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ und $D(G) = N$ für $M,N \in \textbf{Set}$ und sei $g: G \rightarrow G$ ein Element der Gruppe. Dann ist $\tau: C \Longrightarrow D$ eine natürliche Transformation, bestehend aus genau einer Funktion $\tau: M \rightarrow N$, sodass $\tau(g(m)) = g(\tau(m))$, für jedes $m \in M$.
+Seien $C,D: B\textbf{G} \rightarrow \textbf{Set}$ Funktoren, sodass $C(G) = M$ und $D(G) = N$ für $M,N \in \textbf{Set}$ und sei $g: G \rightarrow G$ ein Element der Gruppe. Dann ist $\tau: C \Longrightarrow D$ eine natürliche Transformation, bestehend aus genau einer Funktion $\tau: M \rightarrow N$, sodass $\tau(g(m)) = g(\tau(m))$, für jedes $m \in M$.
 \end{proof}
 
 Natürliche Transformationen sind also \textbf{$G$-äquivariante Abbildungen}. Diese Gleichung lässt sich mit dem nachfolgenden kommutierenden Diagramm noch einmal veranschaulichen.
@@ -195,7 +195,7 @@ Sei $\mathcal{A}$ eine Kategorie und $F: \mathcal{A} \rightarrow \textbf{Set}$ e
 Der Funktor $F$ heißt \textbf{darstellbar}, wenn es ein Objekt $X$ in $\mathcal{A}$ gibt und einen Isomorphismus $F \cong \text{Mor}_{\mathcal{A}}(X,\cdot)$ von Funktoren.
 \end{defn}
 
-Anders ausgedrückt soll der Funktor $F: \mathcal{A} \mapsto \text{Mor}_\mathcal{A}(X,\cdot)$ abbilden, also $F(M) = \text{Mor}_\mathcal{A}(X,M)$ in $\textbf{Set}$. Man beachte, dass der Funktor $F$ kovariant ist. Man betrachte dafür nur den Morphismus $f: X \rightarrow Y$, dann ist der induzierte Morphismus $F(f): F(X) \rightarrow F(Y)$ gegeben durch $\text{Mor}_{\mathcal{A}}(X,M) \rightarrow \text{Mor}_{\mathcal{A}}(Y,M)$. Die Fragen, die wir mit der Darstellbarkeit klären wollen, lassen sich also explizit wie folgt formulieren:
+Anders ausgedrückt soll der Funktor $F: \mathcal{A} \mapsto \text{Mor}_\mathcal{A}(X,\cdot)$ abbilden, also $F(M) = \text{Mor}_\mathcal{A}(X,M)$ in $\textbf{Set}$. Man beachte, dass der Funktor $F$ kovariant ist. Man betrachte dafür nur den Morphismus $f: M \rightarrow N$, dann ist der induzierte Morphismus $F(f): F(M) \rightarrow F(N)$ gegeben durch $\text{Mor}_{\mathcal{A}}(X,M) \rightarrow \text{Mor}_{\mathcal{A}}(Y,M)$. Die Fragen, die wir mit der Darstellbarkeit klären wollen, lassen sich also explizit wie folgt formulieren:
 
 \begin{itemize}
 	\item Sei eine Kategorie $\mathcal{A}$ gegeben. Was ist dann $F$ und was ist $M$?
@@ -212,7 +212,7 @@ Das liefert uns eine natürliche Transformation $(\cdot \circ f): \text{Mor}_{\m
 
 \begin{exmp}
 	\begin{enumerate}
-		\item Sei $U: \textbf{Grp} \rightarrow \textbf{Set}$ ein Funktor von der Kategorie der Gruppen in die Kategorie der Mengen. Damit wird eine Gruppe auf eine Menge abgebildet und der Gruppenhomomorphismus auf die zu Grunde liegende Funktion.
+		\item Sei $U: \textbf{Grp} \rightarrow \textbf{Set}$ ein Funktor von der Kategorie der Gruppen in die Kategorie der Mengen. Damit wird eine Gruppe auf die zu Grunde liegende Menge abgebildet und der Gruppenhomomorphismus auf die zu Grunde liegende Funktion.
 		Wir betrachten ein Element $g \in G$, dann gibt es einen eindeutigen Homomorphismus $\phi_g: \mathbb{Z} \rightarrow G$, so dass $1 \mapsto g$. Andererseits wird $1$ immer auf ein Element von $G$ abgebildet, also handelt es sich hierbei um eine Bijektion zwischen der Menge an Elementen in $G$ und der Menge an Homomorphismen von $\mathbb{Z}$ nach $G$. Diese Bijektion $\tau_G: U(G) \rightarrow \text{Mor}_{\textbf{Grp}}(\mathbb{Z},G)$ sind also die Komponenten des natürlichen Isomorphismus. Es bleibt zu zeigen, dass für jeden Gruppenhomomorphismus $\varphi: G \rightarrow H$ für Gruppen $G,H$ die Gleichung
 		\begin{equation}
 		\tau_H \circ U(\varphi) = \text{Mor}_{\textbf{Grp}}(\mathbb{Z},\varphi) \circ \tau_G
@@ -234,22 +234,29 @@ Das liefert uns eine natürliche Transformation $(\cdot \circ f): \text{Mor}_{\m
 Möchte man mathematische Objekte besser verstehen, so postuliert das Yoneda-Lemma, ist es notwendig die Beziehung dieser Objekte zu allen anderen Objekten mit denselben mathematischen Eigenschaften zu verstehen. Ein Objekt wird also vollständig durch seine Beziehungen zu anderen Objekten bestimmt, d.h. dadurch, wie das Objekt aus der Sicht jedes Objekts in der Kategorie \emph{aussieht}. Im Folgenden präzisieren wir diese Aussage durch das Yoneda-Lemma:
 
 \begin{lem}[Das Yoneda-Lemma]
-Seien $X$ und $Y$ Objekte einer Kategorie $\mathcal{A}$ und $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von Funktoren von $\mathcal{A}$ nach $\textbf{Set}$. Dann gibt es genau einen Isomorphismus $f: X \rightarrow Y$ mit $\tau = (\cdot \circ f)$. Insbesondere ist das Objekt $X$ durch den Funktor $\text{Mor}_{\mathcal{A}}(X,\cdot)$ bestimmt bis auf eindeutige Isomorphie.
+Seien $X$ und $Y$ Objekte einer lokal kleinen Kategorie $\mathcal{A}$ und $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von vergesslichen Funktoren. Dann gibt es genau einen Isomorphismus $f: X \rightarrow Y$ mit $\tau = (\cdot \circ f)$. Insbesondere ist das Objekt $X$ durch den Funktor $\text{Mor}_{\mathcal{A}}(X,\cdot)$ bestimmt bis auf eindeutige Isomorphie.
 \end{lem}
 
 \begin{proof}
-Sei $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von Funktoren. Sei $f: X \rightarrow Y$ das Bild von $\text{Id}_Y$ und $M$ ein weiteres Objekt in der Kategorie $\mathcal{A}$ und $\phi \in \text{Mor}_\mathcal{A}(Y,M)$. Dann gibt es ein kommutatives Diagramm
+Sei $\tau: \text{Mor}_{\mathcal{A}}(Y,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(X,\cdot)$ ein Isomorphismus von vergesslichen Funktoren. Wir erinnern uns an dieser Stelle, dass $\text{Mor}_{\mathcal{A}}(Y,\cdot)$ eine Menge von vergesslichen Funktoren $F: \mathcal{A} \rightarrow \textbf{Set}$ ist. Sei $f: X \rightarrow Y$ das Bild von $\text{Id}_Y$ und $M$ ein weiteres Objekt in der Kategorie $\mathcal{A}$ und $\phi \in \text{Mor}_\mathcal{A}(Y,M)$. Dann gibt es ein kommutatives Diagramm
 \begin{equation}
 	\begin{tikzcd}
 	{\text{Mor}_{\mathcal{A}}(Y,Y)} \arrow[d, "\phi \circ"] \arrow[r, "\tau_Y"] & {\text{Mor}_{\mathcal{A}}(X,Y)} \arrow[d, "\phi \circ"] \\
 	{\text{Mor}_{\mathcal{A}}(Y,M)} \arrow[r, "\tau_M"]                         & {\text{Mor}_{\mathcal{A}}(X,M)}.                        
 	\end{tikzcd}
 \end{equation}
-Wenn wir oben links mit der Identität starten, erhalten wir über den linken unteren Weg $\tau_M(\phi)$, über den oberen rechten Weg aber $\phi \circ f$. Also ist $\tau_M(\phi) = \phi \circ f$ für alle Daten $(M,\phi)$, also ist $\tau = (\cdot \circ f)$. Die Abbildung $f:X \rightarrow Y$ ist aber auch die einzige Abbildung, die diese Gleichung erfüllt. Das erkennt man, indem man $M = Y$ und $\phi = \text{Id}$ wählt: $\tau_Y(\text{Id}) = \text{Id} \circ f = f$.
-
+Wenn wir oben links mit der Identität starten, erhalten wir über den linken unteren Weg $\tau_M(\phi)$, über den oberen rechten Weg aber $\phi \circ f$. Also ist $\tau_M(\phi) = \phi \circ f$ für alle Daten $(M,\phi)$ und somit erhalten wir die natürliche Transformation als Komposition: $\tau = (\cdot \circ f)$. Die Abbildung $f:X \rightarrow Y$ ist aber auch die einzige Abbildung, die diese Gleichung erfüllt. Das erkennt man, indem man $M = Y$ und $\phi = \text{Id}$ wählt: $\tau_Y(\text{Id}) = \text{Id} \circ f = f$, wie im folgenden Diagramm zu sehen ist:
+\begin{equation}
+	\begin{tikzcd}
+	{\text{Mor}_{\mathcal{A}}(Y,Y)} \arrow[d, "\phi \circ"] \arrow[r, "\text{Id}"] & {\text{Mor}_{\mathcal{A}}(X,Y)} \arrow[d, "\phi \circ"] \\
+	{\text{Mor}_{\mathcal{A}}(Y,Y)} \arrow[r, "\text{Id}"]                         & {\text{Mor}_{\mathcal{A}}(X,Y)}.                        
+	\end{tikzcd}
+\end{equation}
+Analog zu obiger Konstruktion liefert $\tau^{-1}: \text{Mor}_{\mathcal{A}}(X,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(Y,\cdot)$ eine Abbildung $g := \tau^{-1}_X (\text{Id}_X): Y \rightarrow X$.
 Zuletzt zeigen wir noch das $f$ ein Isomorphismus ist.
 
-Analog zu obiger Konstruktion liefert $\tau^{-1}: \text{Mor}_{\mathcal{A}}(X,\cdot) \rightarrow \text{Mor}_{\mathcal{A}}(Y,\cdot)$ eine Abbildung $g := \tau^{-1}_X (\text{Id}_X): Y \rightarrow X$. Wir betrachten nun folgendes Diagramm, das nach Definition von natürlichen Transformationen kommutativ ist:
+
+Wir betrachten nun folgendes Diagramm, das nach Definition von natürlichen Transformationen kommutativ ist:
 \begin{equation}
 	\begin{tikzcd}
 	{\text{Mor}_{\mathcal{A}}(Y,Y)} \arrow[d, "g \circ"] \arrow[r, "\tau_Y"] & {\text{Mor}_{\mathcal{A}}(X,Y)} \arrow[d, "g \circ"] \\
